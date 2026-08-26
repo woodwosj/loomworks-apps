@@ -28,7 +28,7 @@ See README.md for the full operator handover (webhook URL,
     'support': 'apps@loomworks.solutions',
     'price': 79,
     'currency': 'USD',
-    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png'],
+    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png', 'static/description/hero.png', 'static/description/flow.png'],
     'depends': ['stock', 'sale', 'delivery'],
     'data': [
         'security/ir.model.access.csv',

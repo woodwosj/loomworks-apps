@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="ShipStation: order export, carrier processing, V2 webhook, and tracking import"/>
+    </section>
+
     <section class="hero">
       <h1>ShipStation V2 Webhook Connector</h1>
       <p>Native ShipStation V2 webhooks, outbound order export, and automatic tracking import for Odoo deliveries — with a poll fallback that never misses a shipment.</p>
@@ -63,6 +70,7 @@
         <li>Register a <code>fulfillment_shipped_v2</code> webhook in ShipStation pointing at your Odoo URL <code>/shipstation/webhook/v2</code>, forwarding the shared secret in a custom header.</li>
         <li>Export orders manually or automatically. When ShipStation ships, tracking flows back via webhook — or via the 30-minute poll — and appears on the delivery with a chatter entry.</li>
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: order export to ShipStation, carrier processing, V2 webhook with poll fallback, tracking imported onto the delivery"/>
     </section>
 
     <div class="footer">
