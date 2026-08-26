@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="CC surcharge: portal payment, BIN capture, surcharge fee, and past-due service charge"/>
+    </section>
+
     <section class="hero">
       <h1>CC Surcharge Suite</h1>
       <p>Credit card surcharges with automatic debit-card BIN exclusion and portal fee quotes, plus a monthly service charge on past-due balances — in one module.</p>
@@ -67,6 +74,7 @@
         <li>The monthly cron computes past-due service charges and writes a per-invoice audit report. Review runs under Accounting &gt; Reporting &gt; Service Charge Runs.</li>
         <li>To go live, set a dedicated Service Charge Income Account and untick Dry-Run Mode. The module refuses to leave dry-run without the account.</li>
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: portal payment, BIN capture, surcharge quoted and charged in one transaction, plus monthly service charge on past-due AR"/>
     </section>
 
     <div class="footer">

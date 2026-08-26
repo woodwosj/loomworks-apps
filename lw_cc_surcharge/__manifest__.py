@@ -45,7 +45,7 @@ payment terms are configured. No money moves by accident.
     'price': 129.0,
     'currency': 'USD',
     'support': 'apps@loomworks.solutions',
-    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png', 'static/description/screenshot_5.png', 'static/description/screenshot_6.png'],
+    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png', 'static/description/screenshot_5.png', 'static/description/screenshot_6.png', 'static/description/hero.png', 'static/description/flow.png'],
     'depends': [
         'account',
         'payment',
