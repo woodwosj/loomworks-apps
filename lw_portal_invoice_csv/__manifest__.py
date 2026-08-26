@@ -25,7 +25,7 @@ Purely additive — no upstream files modified.
     'support': 'apps@loomworks.solutions',
     'license': 'LGPL-3',
     'price': 0,
-    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png'],
+    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/hero.png', 'static/description/flow.png'],
     'depends': ['account', 'portal'],
     'data': [
         'views/portal_templates.xml',

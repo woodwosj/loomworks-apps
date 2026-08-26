@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="420" viewBox="0 0 1560 420">
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#7c3aed"/>
+    </marker>
+    <linearGradient id="nodeHead" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- arrows -->
+  <line x1="392" y1="210" x2="468" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="792" y1="210" x2="868" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="1192" y1="210" x2="1268" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- node 1: invoice page -->
+  <g>
+    <rect x="40" y="90" width="340" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="40" y="90" width="340" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="40" y="138" width="340" height="16" fill="url(#nodeHead)"/>
+    <circle cx="74" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <rect x="65" y="114" width="18" height="16" rx="2" fill="none" stroke="#7c3aed" stroke-width="2.6"/>
+    <path d="M69 122 h5 l3 -4 h4" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+    <text x="106" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">Invoice Page</text>
+    <text x="60" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Customer opens the portal</text>
+    <text x="60" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">invoice at /my/invoices/&lt;id&gt;</text>
+    <text x="60" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">where Download only</text>
+    <text x="60" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">emits the PDF.</text>
+  </g>
+
+  <!-- node 2: csv route -->
+  <g>
+    <rect x="480" y="90" width="300" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="480" y="90" width="300" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="480" y="138" width="300" height="16" fill="url(#nodeHead)"/>
+    <circle cx="512" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <path d="M505 122 h14 M512 115 v14" stroke="#7c3aed" stroke-width="3.4" stroke-linecap="round"/>
+    <text x="544" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">CSV Route</text>
+    <text x="500" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">New /my/invoices/&lt;id&gt;/csv</text>
+    <text x="500" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">guarded by the same</text>
+    <text x="500" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">access-token check as</text>
+    <text x="500" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">the PDF route.</text>
+  </g>
+
+  <!-- node 3: csv built -->
+  <g>
+    <rect x="880" y="90" width="300" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="880" y="90" width="300" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="880" y="138" width="300" height="16" fill="url(#nodeHead)"/>
+    <circle cx="912" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <path d="M903 114 h18 M903 122 h18 M903 130 h18 M906 114 v16" stroke="#7c3aed" stroke-width="2.4" fill="none"/>
+    <text x="944" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">CSV Built</text>
+    <text x="900" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Every invoice line with</text>
+    <text x="900" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">all standard fields plus</text>
+    <text x="900" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">the product barcode /</text>
+    <text x="900" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">UPC per line.</text>
+  </g>
+
+  <!-- node 4: dropdown -->
+  <g>
+    <rect x="1280" y="90" width="240" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="1280" y="90" width="240" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="1280" y="138" width="240" height="16" fill="url(#nodeHead)"/>
+    <circle cx="1312" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <path d="M1306 118 h12 M1306 122 h12 M1312 122 l-4 5 l4 5 l4 -5 z" stroke="#7c3aed" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1344" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">PDF / CSV</text>
+    <text x="1300" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Download becomes a</text>
+    <text x="1300" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">PDF / CSV dropdown,</text>
+    <text x="1300" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">barcoded CSV ready</text>
+    <text x="1300" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">for external software.</text>
+  </g>
+
+  <text x="780" y="384" text-anchor="middle" font-family="DejaVu Sans" font-size="17" fill="#6b7280">Purely additive: no upstream files are modified</text>
+</svg>
