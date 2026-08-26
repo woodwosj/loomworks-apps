@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="Authorize.Net token save fix: card save, penny authorization, tokenize before void, card stored"/>
+    </section>
+
     <section class="hero">
       <h1>Authorize.Net Token Save Fix</h1>
       <p>Restore card saving for Authorize.Net — tokenize the validation transaction before the penny authorization is voided.</p>
@@ -62,6 +69,7 @@
 <li>The validation transaction is tokenized first, then voided normally.</li>
 <li>The card appears in saved payment methods, ready for future payments.</li><!-- <li>step</li> -->
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: card save starts a penny authorization, the validation transaction is tokenized before the void, and the card is stored"/>
     </section>
 
     <div class="footer">
