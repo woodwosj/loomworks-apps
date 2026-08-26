@@ -23,7 +23,7 @@ Key Features:
     "license": "OPL-1",
     "price": 9,
     "currency": "USD",
-    "images": ["static/description/screenshot_1.png", "static/description/screenshot_2.png", "static/description/screenshot_3.png", "static/description/screenshot_4.png"],
+    "images": ["static/description/screenshot_1.png", "static/description/screenshot_2.png", "static/description/screenshot_3.png", "static/description/screenshot_4.png", "static/description/hero.png", "static/description/flow.png"],
     "depends": ["sale", "sale_stock"],
     "data": [
         "security/ir.model.access.csv",
