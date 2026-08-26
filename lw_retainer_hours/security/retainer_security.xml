@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Portal users: read plans of their own partner (incl. parent/child) -->
+        <record id="rule_retainer_plan_portal" model="ir.rule">
+            <field name="name">Retainer Plan: portal own partner</field>
+            <field name="model_id" ref="model_retainer_plan"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[('partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Internal users: read plans of their own partner -->
+        <record id="rule_retainer_plan_own_partner" model="ir.rule">
+            <field name="name">Retainer Plan: internal own partner</field>
+            <field name="model_id" ref="model_retainer_plan"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Sales users: full access to all plans -->
+        <record id="rule_retainer_plan_salesman" model="ir.rule">
+            <field name="name">Retainer Plan: sales full access</field>
+            <field name="model_id" ref="model_retainer_plan"/>
+            <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Portal users: read consumptions of their own partner's plans -->
+        <record id="rule_retainer_consumption_portal" model="ir.rule">
+            <field name="name">Retainer Consumption: portal own partner</field>
+            <field name="model_id" ref="model_retainer_consumption"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[('plan_id.partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Internal users: read consumptions of their own partner's plans -->
+        <record id="rule_retainer_consumption_own_partner" model="ir.rule">
+            <field name="name">Retainer Consumption: internal own partner</field>
+            <field name="model_id" ref="model_retainer_consumption"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('plan_id.partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Sales users: full access to all consumptions -->
+        <record id="rule_retainer_consumption_salesman" model="ir.rule">
+            <field name="name">Retainer Consumption: sales full access</field>
+            <field name="model_id" ref="model_retainer_consumption"/>
+            <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Portal users: read cycle summaries of their own partner's plans -->
+        <record id="rule_retainer_cycle_summary_portal" model="ir.rule">
+            <field name="name">Retainer Cycle Summary: portal own partner</field>
+            <field name="model_id" ref="model_retainer_cycle_summary"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[('plan_id.partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Internal users: read cycle summaries of their own partner's plans -->
+        <record id="rule_retainer_cycle_summary_own_partner" model="ir.rule">
+            <field name="name">Retainer Cycle Summary: internal own partner</field>
+            <field name="model_id" ref="model_retainer_cycle_summary"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('plan_id.partner_id', 'child_of', user.partner_id.commercial_partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Sales users: full access to all cycle summaries -->
+        <record id="rule_retainer_cycle_summary_salesman" model="ir.rule">
+            <field name="name">Retainer Cycle Summary: sales full access</field>
+            <field name="model_id" ref="model_retainer_cycle_summary"/>
+            <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

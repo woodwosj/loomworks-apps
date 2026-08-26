@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>ShipStation V2 Webhook Connector | Loomworks Solutions</title>
+  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <style>
+    :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+    .wrap { max-width:1560px; margin:0 auto; }
+    .hero { background:linear-gradient(135deg,#2e1065 0%,var(--brand) 60%,#8b5cf6 100%); color:#fff; padding:64px 48px; }
+    .hero h1 { font-size:2.4em; margin-bottom:12px; }
+    .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
+    .badges { margin-top:18px; }
+    .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
+    .screens { padding:0 48px 40px; }
+    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .how { padding:0 48px 40px; }
+    .how ol { margin-left:24px; }
+    .how li { margin-bottom:8px; }
+    .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
+    .footer a { color:var(--brand); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>ShipStation V2 Webhook Connector</h1>
+      <p>Native ShipStation V2 webhooks, outbound order export, and automatic tracking import for Odoo deliveries — with a poll fallback that never misses a shipment.</p>
+      <div class="badges">
+        <span class="badge">Odoo 19.0</span>
+        <span class="badge">v19.0.1.0.0</span>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card"><h3>Native V2 Webhooks</h3><p>Receives ShipStation <code>fulfillment_shipped_v2</code> events at <code>/shipstation/webhook/v2</code>, verified in constant time against a shared secret — replay-window and body-size guards included.</p></div>
+      <div class="card"><h3>Automatic Tracking Import</h3><p>Tracking numbers land on the matching <code>stock.picking</code> with a chatter message, carrier label, and shipment reference. Duplicate shipments are acknowledged without double-posting.</p></div>
+      <div class="card"><h3>30-Minute Poll Fallback</h3><p>A watermark-based <code>GET /v2/shipments</code> poll reconciles any delivery whose webhook was missed — the safety net under the fast path.</p></div>
+      <div class="card"><h3>One-Click Order Export</h3><p>Push outgoing deliveries to ShipStation with ship-to, bill-to, and line items. Optional auto-export as soon as a picking is confirmed.</p></div>
+      <div class="card"><h3>Operator Log</h3><p>Every export, import, and error is recorded in a dedicated ShipStation Log view under Inventory &rarr; Configuration for full traceability.</p></div>
+      <div class="card"><h3>Configurable Web Queue Button</h3><p>&ldquo;Open in ShipStation&rdquo; jumps straight to the Awaiting Shipment queue on your account&rsquo;s regional pod URL &mdash; configurable per company.</p></div>
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <img src="screenshot_1.png" alt="ShipStation integration settings under Inventory"/>
+      <img src="screenshot_2.png" alt="ShipStation operation log list"/>
+      <img src="screenshot_3.png" alt="ShipStation log detail with export result"/>
+      <img src="screenshot_4.png" alt="Delivery form with ShipStation export and tracking buttons"/>
+    </section>
+
+    <section class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>Install the module and enable ShipStation under Inventory &rarr; Configuration &rarr; Settings (API key, secret, regional web URL).</li>
+        <li>Set the <code>ir.config_parameter</code> keys (<code>lw_shipstation.webhook_secret</code>, <code>lw_shipstation.api_key</code>) — generate the secret with <code>openssl rand -hex 32</code>.</li>
+        <li>Register a <code>fulfillment_shipped_v2</code> webhook in ShipStation pointing at your Odoo URL <code>/shipstation/webhook/v2</code>, forwarding the shared secret in a custom header.</li>
+        <li>Export orders manually or automatically. When ShipStation ships, tracking flows back via webhook — or via the 30-minute poll — and appears on the delivery with a chatter entry.</li>
+      </ol>
+    </section>
+
+    <div class="footer">
+      <p><strong>Support:</strong> apps@loomworks.solutions — we answer within one business day.</p>
+      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under the Odoo Proprietary License (OPL-1).</p>
+    </div>
+  </div>
+</body>
+</html>

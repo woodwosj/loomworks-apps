@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Retainer Plan Form View -->
+    <record id="view_retainer_plan_form" model="ir.ui.view">
+        <field name="name">retainer.plan.form</field>
+        <field name="model">retainer.plan</field>
+        <field name="arch" type="xml">
+            <form string="Retainer Plan">
+                <header>
+                    <button name="action_add_consumption" type="object"
+                            string="Add Consumption" class="btn-primary"/>
+                    <button name="action_view_cycle_summaries" type="object"
+                            string="Cycle Summaries"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group name="main" string="Plan">
+                            <field name="partner_id"/>
+                            <field name="product_id"/>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group name="terms" string="Terms">
+                            <field name="monthly_hours"/>
+                            <field name="in_plan_rate"/>
+                            <field name="overage_rate"/>
+                            <label for="cycle_start_day"/>
+                            <div class="o_row">
+                                <field name="cycle_start_day"/> of the month
+                            </div>
+                            <field name="rollover_policy"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="usage" string="Current Cycle">
+                            <group>
+                                <group string="Cycle">
+                                    <field name="current_cycle_start"/>
+                                    <field name="current_cycle_end"/>
+                                    <field name="rolled_over_hours"/>
+                                </group>
+                                <group string="Hours">
+                                    <field name="hours_available_this_cycle"/>
+                                    <field name="hours_used_this_cycle"/>
+                                    <field name="hours_remaining"
+                                           decoration-danger="hours_remaining &lt; 0"/>
+                                    <field name="overage_hours"/>
+                                    <field name="rollover_next_cycle"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="consumptions" string="Consumptions">
+                            <field name="consumption_line_ids">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="hours"/>
+                                    <field name="description"/>
+                                    <field name="source"/>
+                                    <field name="timesheet_line_id" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page name="summaries" string="Cycle Summaries">
+                            <field name="cycle_summary_ids">
+                                <list>
+                                    <field name="cycle_start"/>
+                                    <field name="cycle_end"/>
+                                    <field name="hours_available"/>
+                                    <field name="hours_used"/>
+                                    <field name="overage_hours"/>
+                                    <field name="rollover_granted"/>
+                                    <field name="invoice_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Retainer Plan Tree View -->
+    <record id="view_retainer_plan_list" model="ir.ui.view">
+        <field name="name">retainer.plan.list</field>
+        <field name="model">retainer.plan</field>
+        <field name="arch" type="xml">
+            <list string="Retainer Plans"
+                  decoration-warning="hours_remaining &lt; 0">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="product_id" optional="hide"/>
+                <field name="current_cycle_start" optional="show"/>
+                <field name="monthly_hours" string="Included"/>
+                <field name="rolled_over_hours" string="Rolled Over"/>
+                <field name="hours_available_this_cycle" string="Available"/>
+                <field name="hours_used_this_cycle" string="Used"/>
+                <field name="hours_remaining" string="Remaining"/>
+                <field name="overage_hours" string="Overage"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Retainer Plan Pivot View: partner x month -->
+    <record id="view_retainer_plan_pivot" model="ir.ui.view">
+        <field name="name">retainer.plan.pivot</field>
+        <field name="model">retainer.plan</field>
+        <field name="arch" type="xml">
+            <pivot string="Retainer Hours">
+                <field name="partner_id" type="row"/>
+                <field name="current_cycle_start" interval="month" type="col"/>
+                <field name="hours_used_this_cycle" type="measure"/>
+                <field name="hours_available_this_cycle" type="measure"/>
+                <field name="overage_hours" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Retainer Plan Search View -->
+    <record id="view_retainer_plan_search" model="ir.ui.view">
+        <field name="name">retainer.plan.search</field>
+        <field name="model">retainer.plan</field>
+        <field name="arch" type="xml">
+            <search string="Retainer Plans">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <filter string="Archived" name="inactive"
+                        domain="[('active', '=', False)]"/>
+                <filter string="In Overage" name="overage"
+                        domain="[('overage_hours', '&gt;', 0)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Retainer Plan Action -->
+    <record id="action_retainer_plans" model="ir.actions.act_window">
+        <field name="name">Retainer Plans</field>
+        <field name="res_model">retainer.plan</field>
+        <field name="view_mode">list,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No retainer plans yet.
+            </p>
+            <p>Create a plan to track included hours, rollover and overage per client.</p>
+        </field>
+    </record>
+
+</odoo>

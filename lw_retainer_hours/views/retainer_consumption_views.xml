@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Retainer Consumption Tree View -->
+    <record id="view_retainer_consumption_list" model="ir.ui.view">
+        <field name="name">retainer.consumption.list</field>
+        <field name="model">retainer.consumption</field>
+        <field name="arch" type="xml">
+            <list string="Consumptions">
+                <field name="date"/>
+                <field name="plan_id"/>
+                <field name="partner_id" optional="show"/>
+                <field name="hours" sum="Total Hours"/>
+                <field name="description"/>
+                <field name="source"/>
+                <field name="timesheet_line_id" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Retainer Consumption Form View -->
+    <record id="view_retainer_consumption_form" model="ir.ui.view">
+        <field name="name">retainer.consumption.form</field>
+        <field name="model">retainer.consumption</field>
+        <field name="arch" type="xml">
+            <form string="Consumption">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="plan_id"/>
+                            <field name="date"/>
+                            <field name="hours"/>
+                            <field name="source"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="timesheet_line_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Retainer Consumption Search View -->
+    <record id="view_retainer_consumption_search" model="ir.ui.view">
+        <field name="name">retainer.consumption.search</field>
+        <field name="model">retainer.consumption</field>
+        <field name="arch" type="xml">
+            <search string="Consumptions">
+                <field name="plan_id"/>
+                <field name="partner_id"/>
+                <field name="description"/>
+                <filter string="Timesheet" name="timesheet"
+                        domain="[('source', '=', 'timesheet')]"/>
+                <filter string="Manual" name="manual"
+                        domain="[('source', '=', 'manual')]"/>
+                <filter string="This Month" name="month"
+                        domain="[('date', '&gt;=', context_today().strftime('%%Y-%%m-01'))]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Retainer Consumption Action -->
+    <record id="action_retainer_consumptions" model="ir.actions.act_window">
+        <field name="name">Consumptions</field>
+        <field name="res_model">retainer.consumption</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No consumptions logged yet.
+            </p>
+            <p>Log hours manually or link them from timesheets.</p>
+        </field>
+    </record>
+
+    <!-- Consumption Wizard Form -->
+    <record id="view_retainer_consumption_wizard_form" model="ir.ui.view">
+        <field name="name">retainer.consumption.wizard.form</field>
+        <field name="model">retainer.consumption.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Consumption">
+                <group>
+                    <field name="plan_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="hours"/>
+                    <field name="description" placeholder="What did you work on?"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object"
+                            string="Add" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

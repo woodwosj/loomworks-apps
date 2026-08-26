@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--
+            Service Charge / CC Surcharge exemptions live on the partner's
+            **Accounting** tab, mirroring the AR Dunning Controls group
+            (same base.view_partner_form anchor, same is_company guard). Both flags are read off the commercial
+            partner only; the checkboxes are hidden on child contacts.
+            The two opt-outs are independent: a customer can be
+            exempt from one, both, or neither.
+        -->
+        <record id="view_res_partner_service_charge_form" model="ir.ui.view">
+            <field name="name">res.partner.service.charge.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='accounting']" position="inside">
+                    <group name="lw_cc_surcharge_controls"
+                           string="Credit Card Surcharge"
+                           invisible="not is_company">
+                        <field name="lw_cc_surcharge_optout"/>
+                    </group>
+                    <group name="lw_cc_service_charge_controls"
+                           string="Charge Terms Interest"
+                           invisible="not is_company">
+                        <field name="lw_cc_service_charge_optout"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

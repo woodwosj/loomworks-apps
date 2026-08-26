@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Retainer Cycle Summary Tree View -->
+    <record id="view_retainer_cycle_summary_list" model="ir.ui.view">
+        <field name="name">retainer.cycle.summary.list</field>
+        <field name="model">retainer.cycle.summary</field>
+        <field name="arch" type="xml">
+            <list string="Cycle Summaries" create="false" edit="false"
+                  decoration-warning="overage_hours &gt; 0">
+                <field name="cycle_start"/>
+                <field name="cycle_end"/>
+                <field name="plan_id"/>
+                <field name="partner_id"/>
+                <field name="hours_available" string="Available"/>
+                <field name="hours_used" string="Used"/>
+                <field name="overage_hours" string="Overage"/>
+                <field name="rollover_granted" string="Rolled Over"/>
+                <field name="invoice_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Retainer Cycle Summary Form View -->
+    <record id="view_retainer_cycle_summary_form" model="ir.ui.view">
+        <field name="name">retainer.cycle.summary.form</field>
+        <field name="model">retainer.cycle.summary</field>
+        <field name="arch" type="xml">
+            <form string="Cycle Summary" create="false" edit="false">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoice" type="object"
+                                class="oe_stat_button" icon="fa-file-text-o"
+                                string="Renewal Invoice"
+                                invisible="not invoice_id">
+                            <field name="invoice_id" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h2><field name="display_label" readonly="1"/></h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="plan_id"/>
+                            <field name="partner_id"/>
+                            <field name="cycle_start"/>
+                            <field name="cycle_end"/>
+                        </group>
+                        <group>
+                            <field name="hours_available"/>
+                            <field name="hours_used"/>
+                            <field name="overage_hours"/>
+                            <field name="rollover_granted"/>
+                            <field name="invoice_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Retainer Cycle Summary Search View -->
+    <record id="view_retainer_cycle_summary_search" model="ir.ui.view">
+        <field name="name">retainer.cycle.summary.search</field>
+        <field name="model">retainer.cycle.summary</field>
+        <field name="arch" type="xml">
+            <search string="Cycle Summaries">
+                <field name="plan_id"/>
+                <field name="partner_id"/>
+                <filter string="With Overage" name="overage"
+                        domain="[('overage_hours', '&gt;', 0)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Retainer Cycle Summary Action -->
+    <record id="action_retainer_cycle_summaries" model="ir.actions.act_window">
+        <field name="name">Cycle Summaries</field>
+        <field name="res_model">retainer.cycle.summary</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No cycle summaries yet.
+            </p>
+            <p>The daily rollover cron snapshots each closed cycle here.</p>
+        </field>
+    </record>
+
+</odoo>

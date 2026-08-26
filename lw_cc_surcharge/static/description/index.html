@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>CC Surcharge Suite | Loomworks Solutions</title>
+  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <style>
+    :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+    .wrap { max-width:1560px; margin:0 auto; }
+    .hero { background:linear-gradient(135deg,#2e1065 0%,var(--brand) 60%,#8b5cf6 100%); color:#fff; padding:64px 48px; }
+    .hero h1 { font-size:2.4em; margin-bottom:12px; }
+    .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
+    .badges { margin-top:18px; }
+    .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
+    .screens { padding:0 48px 40px; }
+    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .how { padding:0 48px 40px; }
+    .how ol { margin-left:24px; }
+    .how li { margin-bottom:8px; }
+    .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
+    .footer a { color:var(--brand); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>CC Surcharge Suite</h1>
+      <p>Credit card surcharges with automatic debit-card BIN exclusion and portal fee quotes, plus a monthly service charge on past-due balances — in one module.</p>
+      <div class="badges">
+        <span class="badge">Odoo 19.0</span>
+        <!-- EDITION_BADGE -->
+        <span class="badge">v19.0.1.0.0</span>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card"><h3>Credit card surcharge at payment time</h3><p>Add a configurable percentage fee when Net 30+ customers pay by credit card. The fee posts as its own invoice or as a line on the invoice being paid — your choice of accounting treatment.</p></div>
+      <div class="card"><h3>Debit-card BIN exclusion</h3><p>Self-hosted BIN (Bank Identification Number) lookup with quarterly CSV refresh. Debit and unidentifiable cards are never surcharged, so your cardholders are never surprised.</p></div>
+      <div class="card"><h3>Portal fee quote</h3><p>Customers see the exact fee before they pay: quoted as soon as the first six card digits are entered or a saved card is selected, then charged as invoice + fee in one transaction.</p></div>
+      <div class="card"><h3>Backend Pay-wizard surcharge</h3><p>Staff register card payments with a waivable surcharge checkbox, pre-checked for credit-card tokens. Every gate is re-validated server-side.</p></div>
+      <div class="card"><h3>Monthly service charge on past-due AR</h3><p>1.5% per month on balances past due over 30 days (rate, grace days and minimum balance all configurable). A monthly cron computes and reports — and only invoices when you say so.</p></div>
+      <div class="card"><h3>DRY-RUN-ARMED by default</h3><p>Installs in dry-run: the cron reports monthly and creates zero invoices until you set an income account and explicitly go live. No money moves by accident.</p></div>
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <img src="screenshot_1.png" alt="CC Surcharge settings in the Accounting Settings page"/>
+      <img src="screenshot_2.png" alt="BIN records table showing card network ranges"/>
+      <img src="screenshot_3.png" alt="Service charge runs with dry-run and live status"/>
+      <img src="screenshot_4.png" alt="Service charge run detail with computed amounts"/>
+      <img src="screenshot_5.png" alt="Invoice payment modal with the credit card surcharge applied"/>
+      <img src="screenshot_6.png" alt="Portal invoice payment with the card fee quoted"/>
+    </section>
+
+    <section class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>Install the module and open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge. Set the credit card surcharge percentage, the applicable payment terms (Net 30+), and the monthly service charge parameters.</li>
+        <li>Load BIN reference data (Settings &gt; View BIN Records &gt; load a bin-list CSV) so debit cards are recognized and excluded automatically.</li>
+        <li>Optional: tick Portal Fee Uplift to quote and charge the fee in the customer payment modal in one transaction; the backend Pay wizard shows a waivable surcharge checkbox for staff card payments.</li>
+        <li>The monthly cron computes past-due service charges and writes a per-invoice audit report. Review runs under Accounting &gt; Reporting &gt; Service Charge Runs.</li>
+        <li>To go live, set a dedicated Service Charge Income Account and untick Dry-Run Mode. The module refuses to leave dry-run without the account.</li>
+      </ol>
+    </section>
+
+    <div class="footer">
+      <p><strong>Support:</strong> apps@loomworks.solutions — we answer within one business day.</p>
+      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under OPL-1 — one license per installed company.</p>
+    </div>
+  </div>
+</body>
+</html>

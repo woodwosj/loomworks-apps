@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_retainer_root"
+              name="Retainers"
+              sequence="45"
+              groups="sales_team.group_sale_salesman"/>
+
+    <menuitem id="menu_retainer_plans"
+              name="Plans"
+              parent="menu_retainer_root"
+              action="action_retainer_plans"
+              sequence="10"/>
+
+    <menuitem id="menu_retainer_consumptions"
+              name="Consumptions"
+              parent="menu_retainer_root"
+              action="action_retainer_consumptions"
+              sequence="20"/>
+
+    <menuitem id="menu_retainer_cycle_summaries"
+              name="Cycle Summaries"
+              parent="menu_retainer_root"
+              action="action_retainer_cycle_summaries"
+              sequence="30"/>
+
+</odoo>

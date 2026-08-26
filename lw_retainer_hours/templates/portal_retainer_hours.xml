@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_retainer_hours" name="Retainer Hours Log">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/my">My Account</a>
+                    </li>
+                    <li class="active">
+                        <span t-esc="plan.display_name"/> — Hours Log
+                    </li>
+                </ol>
+            </t>
+
+            <h1 class="mt-4">
+                <span t-esc="plan.partner_id.name"/> — Retainer Hours
+                <small class="text-muted" t-esc="plan.name"/>
+            </h1>
+
+            <!-- Current cycle snapshot -->
+            <div class="row mt-4 mb-4" id="cycle_summary">
+                <div class="col-12">
+                    <h4>
+                        Cycle
+                        <span t-out="plan.current_cycle_start" t-options='{"widget": "date"}'/>
+                        →
+                        <span t-out="plan.current_cycle_end" t-options='{"widget": "date"}'/>
+                    </h4>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="h3" t-esc="'%.2f' % plan.hours_available_this_cycle"/>
+                            <div class="small text-muted">Available hours</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="h3" t-esc="'%.2f' % plan.hours_used_this_cycle"/>
+                            <div class="small text-muted">Used hours</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="h3" t-esc="'%.2f' % plan.hours_remaining"/>
+                            <div class="small text-muted">Remaining hours</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="h3" t-esc="'%.2f' % plan.overage_hours"/>
+                            <div class="small text-muted">
+                                Overage hours (at
+                                <span t-out="plan.overage_rate" t-options='{"widget": "monetary", "display_currency": plan.currency_id}'/>/h)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 small text-muted mt-2">
+                    <span t-if="plan.rollover_policy == 'one_cycle'">
+                        Unused hours roll over to the next cycle only (this cycle started with
+                        <span t-esc="'%.2f' % plan.rolled_over_hours"/> rolled-over hours).
+                    </span>
+                    <span t-else="">
+                        Unused hours do not roll over.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Line items -->
+            <h4 id="consumptions">Hours logged</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Hours</th>
+                        <th>Description</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-if="not consumptions">
+                        <td colspan="4" class="text-muted">No hours logged yet.</td>
+                    </tr>
+                    <tr t-foreach="consumptions" t-as="consumption">
+                        <td><span t-out="consumption.date" t-options='{"widget": "date"}'/></td>
+                        <td><span t-esc="'%.2f' % consumption.hours"/></td>
+                        <td><span t-field="consumption.description"/></td>
+                        <td><span t-esc="dict(consumption._fields['source'].selection).get(consumption.source, consumption.source)"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </t>
+    </template>
+
+</odoo>

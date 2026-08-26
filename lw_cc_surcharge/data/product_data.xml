@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--
+            Service charge product used as the invoice line on monthly
+            service charge invoices. Maps to a dedicated income account,
+            NOT COGS. The account is resolved at runtime from the company
+            config field ``service_charge_income_account_id``; the product
+            itself uses a generic income account that Accounting overrides
+            on the invoice line if needed.
+
+            type='consu' is valid in V19 (Odoo removed the 'product' type
+            for storable goods, not 'service'). Both 'consu' and 'service'
+            work; 'consu' is used as a safe default for billing items.
+        -->
+        <record id="product_service_charge" model="product.product">
+            <field name="name">Monthly Service Charge (Past-Due AR)</field>
+            <field name="type">consu</field>
+            <field name="list_price">0.0</field>
+            <field name="active">True</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">False</field>
+            <field name="taxes_id" eval="[(5, 0, 0)]"/>
+            <field name="description_sale">Monthly service charge of 1.5% on past-due balance per credit terms.</field>
+        </record>
+
+    </data>
+</odoo>

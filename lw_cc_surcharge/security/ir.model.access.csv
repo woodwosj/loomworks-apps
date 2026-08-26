@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lw_cc_service_charge_runner_invoice,lw_cc.service.charge.runner accountant,model_lw_cc_service_charge_runner,account.group_account_invoice,1,0,0,0
+access_lw_cc_service_charge_runner_manager,lw_cc.service.charge.runner manager,model_lw_cc_service_charge_runner,account.group_account_manager,1,1,1,1
+access_lw_cc_bin_record_invoice,lw_cc.bin.record accountant,model_lw_cc_bin_record,account.group_account_invoice,1,0,0,0
+access_lw_cc_bin_record_manager,lw_cc.bin.record manager,model_lw_cc_bin_record,account.group_account_manager,1,1,1,1
+access_lw_cc_service_charge_run_invoice,lw_cc.service.charge.run accountant,model_lw_cc_service_charge_run,account.group_account_invoice,1,0,0,0
+access_lw_cc_service_charge_run_manager,lw_cc.service.charge.run manager,model_lw_cc_service_charge_run,account.group_account_manager,1,0,0,1
+access_lw_cc_service_charge_run_line_invoice,lw_cc.service.charge.run.line accountant,model_lw_cc_service_charge_run_line,account.group_account_invoice,1,0,0,0
+access_lw_cc_service_charge_run_line_manager,lw_cc.service.charge.run.line manager,model_lw_cc_service_charge_run_line,account.group_account_manager,1,0,0,0

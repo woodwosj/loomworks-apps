@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Backend Pay-wizard CC surcharge checkbox. INERT until
+        the company flag lw_cc_surcharge_backend_wizard is armed:
+        lw_cc_surcharge_available collapses to False and hides both
+        rows.
+
+        Inherits account_payment's OWN inherit of the core wizard view
+        (account_payment.view_account_payment_register_form_inherit_payment,
+        account_payment/wizards/account_payment_register_views.xml),
+        NOT the raw core view directly (adverse review): payment_token_id
+        does not exist in core's own arch: account_payment adds it via
+        this sibling inherit. Depending on the raw core view and xpathing
+        onto payment_token_id anyway only worked because sibling inherits
+        happen to apply in an order where account_payment's already
+        landed first; inheriting the SPECIFIC view that adds the field
+        removes that ordering dependency entirely. Verified against real
+        v19 source (account_payment/wizards/account_payment_register_views.xml)
+        before using this xmlid.
+
+        Known gap (left in place): direct
+        account.payment form token payments that never go through this
+        wizard remain fee-less.
+    -->
+    <record id="view_account_payment_register_form_lw_cc_surcharge" model="ir.ui.view">
+        <field name="name">account.payment.register.form.lw.cc.surcharge</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id"
+               ref="account_payment.view_account_payment_register_form_inherit_payment"/>
+        <field name="arch" type="xml">
+            <field name="payment_token_id" position="after">
+                <field name="lw_cc_surcharge_available" invisible="1"/>
+                <field name="lw_cc_apply_cc_surcharge"
+                       invisible="not lw_cc_surcharge_available"/>
+                <field name="lw_cc_surcharge_fee_display"
+                       invisible="not lw_cc_surcharge_available or not lw_cc_apply_cc_surcharge"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

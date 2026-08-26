@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Service charge run reports.
+
+        Every view here is read-only by construction (create="false"
+        edit="false"): the runner is the only writer. Managers may
+        delete a whole run for housekeeping (see the ACL rationale in
+        models/service_charge_run.py), so delete stays enabled on the
+        run list only, never on the detail lines: a run is either intact
+        or gone, never partially rewritten.
+    -->
+
+    <!-- ============================================================ -->
+    <!-- Run header                                                    -->
+    <!-- ============================================================ -->
+
+    <record id="lw_cc_service_charge_run_view_list" model="ir.ui.view">
+        <field name="name">lw_cc.service.charge.run.view.list</field>
+        <field name="model">lw_cc.service.charge.run</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" default_order="run_date desc">
+                <field name="name"/>
+                <field name="run_date"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="mode"/>
+                <field name="sc_mode"/>
+                <field name="pct" optional="show"/>
+                <field name="partner_count"/>
+                <field name="charged_partner_count"/>
+                <field name="skipped_partner_count"/>
+                <field name="line_count" optional="hide"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="total_computed" sum="Total Computed"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-danger="state == 'error'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="lw_cc_service_charge_run_view_form" model="ir.ui.view">
+        <field name="name">lw_cc.service.charge.run.view.form</field>
+        <field name="model">lw_cc.service.charge.run</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Run">
+                            <field name="run_date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="mode"/>
+                            <field name="sc_mode"/>
+                            <field name="pct"/>
+                            <field name="state"/>
+                        </group>
+                        <group string="Totals">
+                            <field name="partner_count"/>
+                            <field name="charged_partner_count"/>
+                            <field name="skipped_partner_count"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="total_computed"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detail" name="detail">
+                            <field name="line_ids" nolabel="1">
+                                <list create="false" edit="false" delete="false"
+                                      default_order="computed_interest desc">
+                                    <field name="partner_id"/>
+                                    <field name="move_id"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="amount_residual" sum="Past-Due Residual"/>
+                                    <field name="computed_interest" sum="Computed Interest"/>
+                                    <field name="action"/>
+                                    <field name="reason"/>
+                                    <field name="reason_detail" optional="show"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Summary" name="summary">
+                            <field name="note" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lw_cc_service_charge_run_view_search" model="ir.ui.view">
+        <field name="name">lw_cc.service.charge.run.view.search</field>
+        <field name="model">lw_cc.service.charge.run</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <filter name="filter_dry_run" string="Dry Run"
+                        domain="[('mode', '=', 'dry_run')]"/>
+                <filter name="filter_live" string="Live"
+                        domain="[('mode', '=', 'live')]"/>
+                <separator/>
+                <filter name="filter_with_errors" string="With Errors"
+                        domain="[('state', '=', 'error')]"/>
+                <separator/>
+                <filter name="filter_run_date" string="Run Date"
+                        date="run_date"/>
+                <separator/>
+                <!--
+                    Group-by filters are a FLAT list, not wrapped in
+                    <group expand="0">: the Odoo 19 view schema rejects
+                    the expand attribute on group inside a search view.
+                    Same fix, same reason, as the sibling sales-approval module's
+                    search view (see the comment above it).
+                -->
+                <filter name="group_mode" string="Mode"
+                        context="{'group_by': 'mode'}"/>
+                <filter name="group_sc_mode" string="Delivery Mode"
+                        context="{'group_by': 'sc_mode'}"/>
+                <filter name="group_run_date" string="Run Month"
+                        context="{'group_by': 'run_date:month'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Run detail lines (cross-run list, so  can sort/filter    -->
+    <!-- the whole history in one place)                               -->
+    <!-- ============================================================ -->
+
+    <record id="lw_cc_service_charge_run_line_view_list" model="ir.ui.view">
+        <field name="name">lw_cc.service.charge.run.line.view.list</field>
+        <field name="model">lw_cc.service.charge.run.line</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false"
+                  default_order="computed_interest desc">
+                <field name="run_id"/>
+                <field name="run_date"/>
+                <field name="mode"/>
+                <field name="partner_id"/>
+                <field name="move_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount_residual" sum="Past-Due Residual"/>
+                <field name="computed_interest" sum="Computed Interest"/>
+                <field name="action"/>
+                <field name="reason"/>
+                <field name="reason_detail" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="lw_cc_service_charge_run_line_view_search" model="ir.ui.view">
+        <field name="name">lw_cc.service.charge.run.line.view.search</field>
+        <field name="model">lw_cc.service.charge.run.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="move_id"/>
+                <field name="run_id"/>
+                <filter name="filter_charged" string="Charged"
+                        domain="[('action', '=', 'charged')]"/>
+                <filter name="filter_would_charge" string="Would Charge"
+                        domain="[('action', '=', 'would_charge')]"/>
+                <filter name="filter_skipped" string="Skipped"
+                        domain="[('action', '=', 'skipped')]"/>
+                <separator/>
+                <filter name="filter_errors" string="Unexpected Errors"
+                        domain="[('reason', '=', 'unexpected_error')]"/>
+                <separator/>
+                <filter name="filter_run_date" string="Run Date"
+                        date="run_date"/>
+                <separator/>
+                <!-- Flat, not <group expand="0">: see the note on the
+                     run header's search view above. -->
+                <filter name="group_run" string="Run"
+                        context="{'group_by': 'run_id'}"/>
+                <filter name="group_partner" string="Customer"
+                        context="{'group_by': 'partner_id'}"/>
+                <filter name="group_action" string="Action"
+                        context="{'group_by': 'action'}"/>
+                <filter name="group_reason" string="Reason"
+                        context="{'group_by': 'reason'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Actions + menus                                               -->
+    <!-- ============================================================ -->
+
+    <record id="lw_cc_service_charge_run_action" model="ir.actions.act_window">
+        <field name="name">Service Charge Runs</field>
+        <field name="res_model">lw_cc.service.charge.run</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="lw_cc_service_charge_run_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No service charge runs recorded yet.
+            </p>
+            <p>
+                The monthly service charge cron writes one run here on
+                every tick, in dry-run mode as well as live. Open a run
+                to see, invoice by invoice, what was charged and why
+                anything was skipped.
+            </p>
+        </field>
+    </record>
+
+    <record id="lw_cc_service_charge_run_line_action" model="ir.actions.act_window">
+        <field name="name">Service Charge Run Detail</field>
+        <field name="res_model">lw_cc.service.charge.run.line</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="lw_cc_service_charge_run_line_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No service charge run detail yet.
+            </p>
+            <p>
+                Every past-due invoice considered by every run, across
+                all runs. Sorted by computed interest, highest first.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_lw_cc_service_charge_run_root"
+              name="Service Charge Runs"
+              parent="account.menu_finance_reports"
+              groups="account.group_account_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_lw_cc_service_charge_run"
+              name="Runs"
+              parent="menu_lw_cc_service_charge_run_root"
+              action="lw_cc_service_charge_run_action"
+              groups="account.group_account_manager"
+              sequence="10"/>
+
+    <menuitem id="menu_lw_cc_service_charge_run_line"
+              name="Detail Lines"
+              parent="menu_lw_cc_service_charge_run_root"
+              action="lw_cc_service_charge_run_line_action"
+              groups="account.group_account_manager"
+              sequence="20"/>
+
+</odoo>

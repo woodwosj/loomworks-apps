@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Retainer Hours &amp; Prepaid Blocks | Loomworks Solutions</title>
+  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <style>
+    :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+    .wrap { max-width:1560px; margin:0 auto; }
+    .hero { background:linear-gradient(135deg,#2e1065 0%,var(--brand) 60%,#8b5cf6 100%); color:#fff; padding:64px 48px; }
+    .hero h1 { font-size:2.4em; margin-bottom:12px; }
+    .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
+    .badges { margin-top:18px; }
+    .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
+    .screens { padding:0 48px 40px; }
+    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .how { padding:0 48px 40px; }
+    .how ol { margin-left:24px; }
+    .how li { margin-bottom:8px; }
+    .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
+    .footer a { color:var(--brand); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Retainer Hours &amp; Prepaid Blocks</h1>
+      <p>Track included retainer hours per client per monthly cycle, roll unused hours over once, and bill overages automatically.</p>
+      <div class="badges">
+        <span class="badge">Odoo 19.0</span>
+        <!-- e.g. <span class="badge">Enterprise ready</span> -->
+        <span class="badge">v19.0.1.0.0</span>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card"><h3>Monthly Retainer Plans</h3><p>Set included hours, in-plan and overage rates, cycle start day, and rollover policy for each plan.</p></div>
+<div class="card"><h3>One-Cycle Rollover</h3><p>Unused hours carry over to the next cycle only &#8212; capped at the monthly allowance, no banking.</p></div>
+<div class="card"><h3>Automatic Cycle Billing</h3><p>A daily cron closes cycles, snapshots usage, and drafts the renewal invoice with overage lines when applicable.</p></div>
+<div class="card"><h3>Timesheet &amp; Manual Entry</h3><p>Feed consumption from timesheets (account.analytic.line) or log hours manually against a plan.</p></div>
+<div class="card"><h3>Customer Portal Hours Log</h3><p>Clients see their hours used and remaining per cycle on the portal.</p></div><!-- 3-6 x <div class="card"><h3>X</h3><p>Y</p></div> -->
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <img src="screenshot_1.png" alt="Retainer plan configuration form with included hours and rates"/>
+      <img src="screenshot_2.png" alt="Retainer plans list with client and status"/>
+      <img src="screenshot_3.png" alt="Log consumption hours against the plan"/>
+      <img src="screenshot_4.png" alt="Cycle summary and usage snapshot"/>
+      <img src="screenshot_5.png" alt="Customer portal hours log"/>
+    </section>
+
+    <section class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>Create a retainer plan with included hours, rates, cycle start day, and rollover policy.</li>
+<li>Log consumption from timesheets or manually against the plan.</li>
+<li>The daily cron closes each cycle, computes rollover and overage hours, and drafts the renewal invoice.</li>
+<li>Your client reviews their hours log on the portal.</li><!-- <li>step</li> -->
+      </ol>
+    </section>
+
+    <div class="footer">
+      <p><strong>Support:</strong> apps@loomworks.solutions — we answer within one business day.</p>
+      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under OPL-1 (Odoo Proprietary License v1.0).<!-- e.g. Licensed under OPL-1 / LGPL-3 --></p>
+    </div>
+  </div>
+</body>
+</html>

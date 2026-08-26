@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_shipstation_log_tree" model="ir.ui.view">
+        <field name="name">lw.shipstation.log.tree</field>
+        <field name="model">lw.shipstation.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date" string="Date"/>
+                <field name="operation"/>
+                <field name="status"
+                       decoration-success="status == 'success'"
+                       decoration-danger="status == 'failed'"
+                       widget="badge"/>
+                <field name="picking_id"/>
+                <field name="message"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_shipstation_log_form" model="ir.ui.view">
+        <field name="name">lw.shipstation.log.form</field>
+        <field name="model">lw.shipstation.log</field>
+        <field name="arch" type="xml">
+            <form string="ShipStation Log Entry" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="create_date" string="Date"/>
+                            <field name="operation"/>
+                            <field name="status"/>
+                            <field name="picking_id"/>
+                        </group>
+                        <group>
+                            <field name="message"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request Data">
+                            <field name="request_data" widget="code"/>
+                        </page>
+                        <page string="Response Data">
+                            <field name="response_data" widget="code"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_shipstation_log" model="ir.actions.act_window">
+        <field name="name">ShipStation Logs</field>
+        <field name="res_model">lw.shipstation.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu: Inventory > Configuration > ShipStation Logs -->
+    <menuitem id="menu_shipstation_log"
+              name="ShipStation Logs"
+              parent="stock.menu_warehouse_config"
+              action="action_shipstation_log"
+              sequence="99"/>
+</odoo>

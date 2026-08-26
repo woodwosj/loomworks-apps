@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--
+            Monthly service charge cron. Ships DRY-RUN-ARMED
+            (active=True), per the operator's decision.
+
+            Armed is safe here and is the point: the runner's only
+            write in dry-run mode is the lw_cc.service.charge.run audit
+            record. Zero account.move / account.move.line rows, zero
+            chatter. The charges themselves stay behind
+            lw_cc_surcharge_dry_run (ships True) and, to turn that
+            off, a dedicated Service Charge Income Account, enforced by
+            res_company._check_live_mode_requires_income_account.
+
+            nextcall below is a LITERAL and is NOT the effective value.
+            An XML data field has to be one, but the real first tick is
+            computed at install/upgrade time as the first of the month
+            AFTER the module lands, 06:00 UTC (hooks.py's
+            first_of_next_month_utc, used by both post_init_hook and
+            the 19.0.5.0.0 migration, which pull this literal forward
+            or back as needed). Promotion is operator-gated with no
+            fixed date, so a literal on its own would go stale the
+            moment the window slipped past it. Read ir_cron.nextcall in
+            the database, not this line, when checking when the engine
+            will next run.
+
+            This data block is noupdate="1", so an EXISTING install does
+            NOT pick up these values on upgrade. The 19.0.5.0.0
+            post-migrate script flips active/nextcall explicitly for
+            upgrades, and post_init_hook does the same for fresh
+            installs (post-migrate never runs on an install).
+        -->
+        <record id="ir_cron_monthly_service_charge" model="ir.cron">
+            <field name="name">Monthly Service Charge on Past-Due AR</field>
+            <field name="model_id" ref="model_lw_cc_service_charge_runner"/>
+            <field name="state">code</field>
+            <field name="code">model._run_monthly_service_charge()</field>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="priority">30</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall">2026-09-01 06:00:00</field>
+        </record>
+
+    </data>
+</odoo>

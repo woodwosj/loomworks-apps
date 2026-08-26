@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_company_cc_surcharge_form" model="ir.ui.view">
+            <field name="name">res.company.cc.surcharge.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="CC Surcharge &amp; Service Charge" name="cc_surcharge">
+                            <group>
+                                <group string="Module Status">
+                                    <field name="lw_cc_surcharge_enabled"/>
+                                    <field name="lw_cc_surcharge_dry_run"
+                                           invisible="not lw_cc_surcharge_enabled"/>
+                                </group>
+                                <group string="Service Charge (Monthly)">
+                                    <field name="lw_cc_surcharge_pct"
+                                           invisible="not lw_cc_surcharge_enabled"/>
+                                    <field name="lw_cc_surcharge_min_balance"
+                                           invisible="not lw_cc_surcharge_enabled"/>
+                                    <field name="lw_cc_surcharge_past_due_days"
+                                           invisible="not lw_cc_surcharge_enabled"/>
+                                </group>
+                            </group>
+                            <group string="Accounting"
+                                   invisible="not lw_cc_surcharge_enabled">
+                                <group>
+                                    <field name="lw_cc_surcharge_product_id"/>
+                                    <field name="lw_cc_surcharge_income_account_id"/>
+                                </group>
+                                <group>
+                                    <field name="lw_cc_surcharge_cc_pct"/>
+                                    <field name="lw_cc_surcharge_cc_income_account_id"/>
+                                </group>
+                            </group>
+                            <group string="Applicable Payment Terms"
+                                   invisible="not lw_cc_surcharge_enabled">
+                                <field name="lw_cc_surcharge_applicable_term_ids"
+                                       nolabel="1" colspan="2"
+                                       widget="many2many_tags"/>
+                            </group>
+                            <group string="Charge Terms Interest Mode"
+                                   invisible="not lw_cc_surcharge_enabled">
+                                <group>
+                                    <field name="lw_cc_sc_mode"/>
+                                    <field name="lw_cc_sc_compounding"
+                                           invisible="lw_cc_sc_mode != 'invoice_line'"/>
+                                    <field name="lw_cc_sc_partial_policy"
+                                           invisible="lw_cc_sc_mode != 'invoice_line'"/>
+                                </group>
+                            </group>
+                            <div class="alert alert-info" role="alert"
+                                 invisible="not lw_cc_surcharge_enabled">
+                                The monthly service charge cron ships DISABLED.
+                                Enable in Settings after counsel sign-off. Dry-run
+                                mode computes and logs charges without creating
+                                invoices. The cron runs on the 1st of each month.
+                            </div>
+                            <div class="alert alert-warning" role="alert"
+                                 invisible="lw_cc_surcharge_enabled">
+                                Module is INERT. No surcharge or service charge
+                                logic runs until enabled.
+                            </div>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

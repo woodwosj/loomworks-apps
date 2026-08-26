@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_lw_cc_surcharge" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.lw.cc.surcharge</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="CC Surcharge" string="CC Surcharge" name="lw_cc_surcharge" groups="account.group_account_manager">
+                    <block title="Module Status" name="cc_surcharge_status_block">
+                        <setting id="lw_cc_surcharge_enabled" string="Enable Module"
+                                 help="Master switch. When off, no surcharge or service charge runs.">
+                            <field name="lw_cc_surcharge_enabled"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_dry_run" string="Service Charge Dry-Run"
+                                 help="When on, computes charges and logs them but creates no invoices."
+                                 invisible="not lw_cc_surcharge_enabled">
+                            <field name="lw_cc_surcharge_dry_run"/>
+                        </setting>
+                        <div class="alert alert-warning" role="alert"
+                             invisible="not lw_cc_surcharge_enabled or lw_cc_surcharge_income_account_id">
+                            No Service Charge Income Account is set. Live mode is
+                            blocked until Accounting selects one below.
+                        </div>
+                        <div class="alert alert-warning" role="alert"
+                             invisible="not lw_cc_surcharge_enabled or lw_cc_surcharge_product_id">
+                            No Service Charge Product is set. Charge invoices will
+                            fall back to the module seed product; select one below.
+                        </div>
+                    </block>
+                    <block title="Monthly Service Charge" name="cc_surcharge_service_block"
+                           invisible="not lw_cc_surcharge_enabled">
+                        <setting id="lw_cc_surcharge_pct" string="Monthly Service Charge %"
+                                 help="Percentage of past-due balance charged monthly.">
+                            <field name="lw_cc_surcharge_pct"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_min_balance" string="Minimum Past-Due Balance"
+                                 help="Partners below this total past-due are skipped.">
+                            <field name="lw_cc_surcharge_min_balance"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_past_due_days" string="Past-Due Grace Days"
+                                 help="Days past due before an invoice qualifies.">
+                            <field name="lw_cc_surcharge_past_due_days"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_product_id" string="Service Charge Product"
+                                 help="Product for the charge invoice line.">
+                            <field name="lw_cc_surcharge_product_id"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_income_account_id" string="Income Account"
+                                 help="Dedicated income account for service charges.">
+                            <field name="lw_cc_surcharge_income_account_id"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_applicable_term_ids" string="Applicable Terms"
+                                 help="Payment terms subject to monthly service charge and credit card surcharge. Empty = all past-due invoices qualify. When set, charges calculate only on invoices with the selected terms.">
+                            <field name="lw_cc_surcharge_applicable_term_ids" widget="many2many_tags"/>
+                        </setting>
+                    </block>
+                    <block title="Charge Terms Interest Mode" name="cc_surcharge_sc_mode_block"
+                           invisible="not lw_cc_surcharge_enabled">
+                        <setting id="lw_cc_sc_mode" string="Delivery Mode"
+                                 help="'Separate Monthly Invoice' (default) is today's behavior. 'Line on Existing Past-Due Invoice' adds interest directly to each qualifying invoice instead. Flip only after a clean staging dry-run tick.">
+                            <field name="lw_cc_sc_mode"/>
+                        </setting>
+                        <setting id="lw_cc_sc_compounding" string="Compounding"
+                                 help="Only used in 'Line on Existing Past-Due Invoice' mode. 'Compound' bases interest on the full residual (prior interest included). 'Simple' subtracts prior interest lines first."
+                                 invisible="lw_cc_sc_mode != 'invoice_line'">
+                            <field name="lw_cc_sc_compounding"/>
+                        </setting>
+                        <setting id="lw_cc_sc_partial_policy" string="Partial-Payment Policy"
+                                 help="Only used in 'Line on Existing Past-Due Invoice' mode. 'Skip' never touches a partially-paid invoice. 'Add Line &amp; Re-Reconcile' adds the line and restores the existing payment match."
+                                 invisible="lw_cc_sc_mode != 'invoice_line'">
+                            <field name="lw_cc_sc_partial_policy"/>
+                        </setting>
+                    </block>
+                    <block title="Credit Card Surcharge" name="cc_surcharge_cc_block"
+                           invisible="not lw_cc_surcharge_enabled">
+                        <setting id="lw_cc_surcharge_cc_pct" string="Credit Card Surcharge %"
+                                 help="Percentage added to CC payments. Set 0 until the payment flow is live.">
+                            <field name="lw_cc_surcharge_cc_pct"/>
+                        </setting>
+                        <setting id="lw_cc_surcharge_cc_income_account_id" string="CC Surcharge Income Account"
+                                 help="Income account for CC surcharge revenue.">
+                            <field name="lw_cc_surcharge_cc_income_account_id"/>
+                        </setting>
+                        <setting id="lw_cc_bin_record_count" string="BIN Records Loaded"
+                                 help="Debit-exclusion BIN table size. 0 means every card is treated as credit and surcharged.">
+                            <field name="lw_cc_bin_record_count" readonly="1"/>
+                            <button name="action_open_bin_records" type="object"
+                                    string="View BIN Records" class="btn-link" icon="oi-arrow-right"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+        One-setting extension of the base CC Surcharge settings view: the
+        INERT arming flag for the portal uplift. Everything stays hidden until
+        the base module is enabled, matching the sibling settings.
+
+        See the module build notes.
+    -->
+    <record id="res_config_settings_view_form_lw_cc_surcharge_uplift" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.lw_cc.surcharge.uplift</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id"
+               ref="lw_cc_surcharge.res_config_settings_view_form_lw_cc_surcharge"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='lw_cc_surcharge_enabled']" position="after">
+                <setting id="lw_cc_surcharge_portal_uplift"
+                         string="Portal Fee Uplift (show + charge together)"
+                         help="Show the credit card fee in the portal payment form and add it to the payment in one transaction. Debit and unknown cards are never charged the fee."
+                         invisible="not lw_cc_surcharge_enabled">
+                    <field name="lw_cc_surcharge_portal_uplift"/>
+                </setting>
+                <setting id="lw_cc_surcharge_backend_wizard"
+                         string="Backend Pay-Wizard Surcharge"
+                         help="Show a waivable 'Apply Credit Card Surcharge' checkbox in the backend Pay wizard when a saved card token is selected. Pre-checked for credit tokens; debit and unknown-verdict tokens default unchecked."
+                         invisible="not lw_cc_surcharge_enabled">
+                    <field name="lw_cc_surcharge_backend_wizard"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

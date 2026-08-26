@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--
+            Company-level defaults. Fields are declared on res.company
+            (see models/res_company.py) with model defaults; this file
+            exists for future per-company overrides at install time.
+
+            Intentionally minimal. As of 19.0.5.0.0 the DRY-RUN-ARMED
+            posture (enabled=True, dry_run=True) comes from the field
+            defaults, from post_init_hook on a fresh install, and from
+            migrations/19.0.5.0.0/post-migrate.py on an upgrade. It is
+            deliberately NOT set from here: this file would need a
+            per-company record for a company id that does not exist on
+            every database, and the hook/migration pair already covers
+            both cases.
+        -->
+
+    </data>
+</odoo>

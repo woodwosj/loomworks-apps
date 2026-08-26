@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_shipstation" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.shipstation</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='stock']" position="inside">
+                <block title="ShipStation Integration" name="shipstation_settings">
+                    <setting string="Enable ShipStation" help="Connect to ShipStation for shipping label generation and tracking import.">
+                        <field name="shipstation_enabled"/>
+                    </setting>
+                    <setting string="API Key" invisible="not shipstation_enabled">
+                        <field name="shipstation_api_key"/>
+                    </setting>
+                    <setting string="API Secret" invisible="not shipstation_enabled">
+                        <field name="shipstation_api_secret" password="True"/>
+                    </setting>
+                    <setting string="Store ID" invisible="not shipstation_enabled" help="Optional: restrict exports to a specific ShipStation store.">
+                        <field name="shipstation_store_id"/>
+                    </setting>
+                    <setting string="ShipStation Web URL" invisible="not shipstation_enabled" help="Base URL of your ShipStation web app (e.g. https://ship14.shipstation.com). The 'Open in ShipStation' button opens the Awaiting Shipment queue at this address.">
+                        <field name="shipstation_web_url" placeholder="https://ship14.shipstation.com"/>
+                    </setting>
+                    <setting string="Auto-Export" invisible="not shipstation_enabled" help="Automatically export pickings to ShipStation when they become ready.">
+                        <field name="shipstation_auto_export"/>
+                    </setting>
+                    <setting invisible="not shipstation_enabled">
+                        <button name="action_shipstation_test_connection"
+                                type="object"
+                                string="Test Connection"
+                                class="btn-primary"
+                                icon="fa-plug"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

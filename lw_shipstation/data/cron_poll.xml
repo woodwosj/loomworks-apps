@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+        ShipStation V2 poll fallback.
+
+        Runs every 30 minutes. Hits ShipStation V2 GET /v2/shipments
+        and reconciles any picking whose carrier_tracking_ref is still
+        null. This is the safety net for missed webhook events; the
+        webhook is the fast path. Both are scoped by an internal
+        watermark (ir.config_parameter lw_shipstation.last_v2_poll)
+        so we never re-scan the full history.
+
+        This is additive to the legacy V1 crons in data/ir_cron.xml,
+        which continue to run against ssapi.shipstation.com for
+        backward compatibility.
+        -->
+        <record id="ir_cron_shipstation_v2_poll" model="ir.cron">
+            <field name="name">ShipStation: V2 Poll Fallback (30 min)</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_shipstation_v2_poll()</field>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

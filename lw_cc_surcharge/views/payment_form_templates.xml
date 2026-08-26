@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Fee disclosure row for the portal payment form (invoice pay modal and
+        invoice payment links). Server renders the row d-none on invoice flows;
+        the JS patch (static/src/js/payment_form_quote.js) unhides and fills it
+        after a /lw_cc_surcharge/quote round trip. Non-invoice flows (website
+        checkout, WebPorter) never render the row, and flag-off pages render no
+        visible change because the JS never activates it.
+
+        The waive row nested inside is a SEPARATE, additional gate on top of
+        the uplift t-if: t-if="request.session.get('impersonate_from_uid')",
+        the same session key OCA impersonate_login() sets ONLY for a staff
+        member's Switch Login (proven pattern:
+        the impersonation module's templates).
+        A real customer's own session never carries that key, so the node is
+        server-side ABSENT from their DOM entirely, not merely hidden by
+        CSS/JS. The checkbox is presentation only; the waive is re-authorized
+        server-side in _lw_cc_uplift_transaction_kwargs ("buttons hide, they
+        don't authorize").
+
+        See the module build notes.
+    -->
+    <template id="lw_cc_surcharge.payment_form_fee_row"
+              inherit_id="payment.form"
+              name="CC surcharge fee row on invoice payment">
+        <xpath expr="//div[@id='o_payment_form_options']" position="after">
+            <div id="lw_cc_surcharge_fee_row"
+                 class="d-flex flex-column gap-1 px-1 small text-muted d-none"
+                 t-if="lw_cc_surcharge_portal_uplift and transaction_route and '/invoice/transaction/' in transaction_route">
+                <span id="lw_cc_surcharge_disclosure"></span>
+                <div id="lw_cc_surcharge_fee_line" class="d-flex justify-content-between d-none">
+                    <span id="lw_cc_surcharge_fee_label"></span>
+                    <span id="lw_cc_surcharge_fee_amount"></span>
+                </div>
+                <div id="lw_cc_surcharge_total_line" class="d-flex justify-content-between d-none">
+                    <span id="lw_cc_surcharge_total_label">New total</span>
+                    <span id="lw_cc_surcharge_total_amount"></span>
+                </div>
+                <div id="lw_cc_surcharge_waive_row"
+                     class="form-check d-flex align-items-center gap-1 mt-1 d-none"
+                     t-if="request.session.get('impersonate_from_uid')">
+                    <input type="checkbox"
+                           id="lw_cc_surcharge_waive_checkbox"
+                           class="form-check-input"/>
+                    <label for="lw_cc_surcharge_waive_checkbox" class="form-check-label mb-0">
+                        Waive the credit card fee for this payment
+                    </label>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

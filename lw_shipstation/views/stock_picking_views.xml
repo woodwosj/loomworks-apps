@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_picking_form_shipstation" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.shipstation</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra']" position="after">
+                <page string="ShipStation" name="shipstation_tab">
+                    <group>
+                        <group string="Export Status">
+                            <field name="ss_exported" widget="boolean_toggle"/>
+                            <field name="ss_export_date" invisible="not ss_exported"/>
+                            <field name="ss_order_id" invisible="not ss_exported"/>
+                            <field name="ss_order_key" invisible="not ss_exported"/>
+                        </group>
+                        <group string="Tracking">
+                            <field name="ss_shipment_id" invisible="not ss_exported"/>
+                            <field name="ss_tracking_synced"/>
+                        </group>
+                    </group>
+                    <group>
+                        <button name="action_export_to_shipstation"
+                                type="object"
+                                string="Export to ShipStation"
+                                class="btn-primary"
+                                icon="fa-cloud-upload"
+                                invisible="ss_exported or picking_type_code != 'outgoing'"/>
+                        <button name="action_refresh_tracking"
+                                type="object"
+                                string="Refresh Tracking"
+                                class="btn-secondary"
+                                icon="fa-refresh"
+                                invisible="not ss_exported"/>
+                        <button name="action_open_shipstation"
+                                type="object"
+                                string="Open in ShipStation"
+                                class="btn-secondary"
+                                icon="fa-external-link"
+                                invisible="not ss_order_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

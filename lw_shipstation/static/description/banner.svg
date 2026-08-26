@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="420" viewBox="0 0 1560 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1560" height="420" fill="url(#bg)"/>
+<circle cx="1330" cy="60" r="210" fill="#8b5cf6" opacity="0.16"/><circle cx="1470" cy="330" r="150" fill="#a78bfa" opacity="0.12"/><circle cx="1160" cy="400" r="90" fill="#c4b5fd" opacity="0.10"/><circle cx="1050" cy="40" r="46" fill="#c4b5fd" opacity="0.14"/><rect x="0" y="352" width="1560" height="68" fill="#2e1065" opacity="0.35"/><text x="64" y="56" font-family="DejaVu Sans" font-size="30" font-weight="bold" letter-spacing="2.5" fill="#ffffff" opacity="0.9">Loomworks</text><rect x="252" y="36" width="14" height="14" rx="4" fill="#a78bfa" opacity="0.95"/><line x1="64" y1="72" x2="600" y2="72" stroke="#c4b5fd" stroke-width="2" opacity="0.4"/><text x="64" y="175" font-family="DejaVu Sans" font-size="69" font-weight="bold" fill="#ffffff">ShipStation V2 Webhook Connector</text><rect x="66" y="193" width="340" height="6" rx="3" fill="#a78bfa" opacity="0.85"/><rect x="64" y="241" width="12" height="12" rx="3" fill="#c4b5fd" opacity="0.9"/><text x="94" y="260" font-family="DejaVu Sans" font-size="30" fill="#ffffff" opacity="0.94">Native ShipStation V2 webhooks</text><rect x="64" y="291" width="12" height="12" rx="3" fill="#c4b5fd" opacity="0.9"/><text x="94" y="310" font-family="DejaVu Sans" font-size="30" fill="#ffffff" opacity="0.94">Automatic tracking import to deliveries</text><rect x="64" y="341" width="12" height="12" rx="3" fill="#c4b5fd" opacity="0.9"/><text x="94" y="360" font-family="DejaVu Sans" font-size="30" fill="#ffffff" opacity="0.94">30-minute poll fallback never misses a shipment</text>
+</svg>

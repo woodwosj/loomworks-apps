@@ -1,0 +1,45 @@
+<odoo>
+  <!-- Search view with group-by options -->
+  <record id="view_sale_order_line_split_search" model="ir.ui.view">
+    <field name="name">sale.order.line.split.search</field>
+    <field name="model">sale.order.line</field>
+    <field name="priority">999</field>
+    <field name="arch" type="xml">
+      <search string="Search Order Lines">
+        <field name="name" string="Description"/>
+        <field name="product_id"/>
+        <field name="split_target"/>
+        <separator/>
+        <filter name="assigned" string="Assigned to Split"
+                domain="[('split_target', '&gt;', 0)]"/>
+        <filter name="unassigned" string="Not Assigned"
+                domain="[('split_target', '=', 0)]"/>
+        <separator/>
+        <filter name="group_split_target" string="Split Group"
+                context="{'group_by': 'split_target'}"/>
+      </search>
+    </field>
+  </record>
+
+  <!-- Editable list view for assigning split groups -->
+  <record id="view_sale_order_line_split_assign" model="ir.ui.view">
+    <field name="name">sale.order.line.split.assign</field>
+    <field name="model">sale.order.line</field>
+    <field name="priority">999</field>
+    <field name="arch" type="xml">
+      <list string="Assign Split Groups" editable="bottom" multi_edit="1" create="0" delete="0">
+        <header>
+          <button name="action_preview_split" type="object" string="✂️ Preview Split"
+                  class="btn-primary"/>
+        </header>
+        <field name="product_id" string="Product" readonly="1" width="400px"/>
+        <field name="product_uom_qty" string="Qty" readonly="1" width="70px"/>
+        <field name="product_uom_id" string="Unit" readonly="1" width="60px"/>
+        <field name="price_unit" string="Price" readonly="1" width="80px"/>
+        <field name="price_subtotal" string="Subtotal" readonly="1" width="100px"/>
+        <field name="split_target" string="Split Group" width="100px"/>
+        <field name="name" string="Description" readonly="1" optional="hide"/>
+      </list>
+    </field>
+  </record>
+</odoo>

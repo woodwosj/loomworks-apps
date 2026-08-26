@@ -1,0 +1,20 @@
+<odoo>
+  <record id="view_lw_sale_split_wizard" model="ir.ui.view">
+    <field name="name">lw.sale.split.wizard.form</field>
+    <field name="model">lw.sale.split.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Preview Split">
+        <group>
+          <field name="sale_order_id" readonly="1"/>
+        </group>
+        <separator string="Review the split before confirming"/>
+        <field name="summary_text" nolabel="1"/>
+        <footer>
+          <button string="Confirm Split" type="object" name="action_split"
+                  class="btn-primary"/>
+          <button string="Cancel" class="btn-secondary" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>
