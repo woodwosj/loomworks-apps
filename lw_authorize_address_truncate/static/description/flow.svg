@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="420" viewBox="0 0 1560 420">
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#7c3aed"/>
+    </marker>
+    <linearGradient id="nodeHead" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- arrows -->
+  <line x1="392" y1="210" x2="468" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="792" y1="210" x2="868" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+  <line x1="1192" y1="210" x2="1268" y2="210" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <!-- node 1: payment attempt -->
+  <g>
+    <rect x="40" y="90" width="340" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="40" y="90" width="340" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="40" y="138" width="340" height="16" fill="url(#nodeHead)"/>
+    <circle cx="74" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <rect x="63" y="113" width="22" height="17" rx="3" fill="none" stroke="#7c3aed" stroke-width="2.6"/>
+    <path d="M63 119 h22" stroke="#7c3aed" stroke-width="2.6"/>
+    <text x="106" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">Payment Attempt</text>
+    <text x="60" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Card payment in the portal</text>
+    <text x="60" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">or backend builds the</text>
+    <text x="60" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">billTo block from partner</text>
+    <text x="60" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">street + street2 + city.</text>
+  </g>
+
+  <!-- node 2: schema check -->
+  <g>
+    <rect x="480" y="90" width="300" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="480" y="90" width="300" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="480" y="138" width="300" height="16" fill="url(#nodeHead)"/>
+    <circle cx="512" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <circle cx="512" cy="122" r="8" fill="none" stroke="#7c3aed" stroke-width="2.6"/>
+    <path d="M518 128 l8 8" stroke="#7c3aed" stroke-width="3.4" stroke-linecap="round"/>
+    <text x="544" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">Schema Check</text>
+    <text x="500" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Fields measured against</text>
+    <text x="500" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Authorize.Net limits:</text>
+    <text x="500" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">address 60, city 40,</text>
+    <text x="500" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">zip 20 characters.</text>
+  </g>
+
+  <!-- node 3: clamp fields -->
+  <g>
+    <rect x="880" y="90" width="300" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="880" y="90" width="300" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="880" y="138" width="300" height="16" fill="url(#nodeHead)"/>
+    <circle cx="912" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <path d="M905 116 l4 -3 l4 3 l0 9 a4 4 0 0 0 8 0 l0 -9 l4 -3 l4 3 l0 13 a8 8 0 0 1 -16 0 z" stroke="#7c3aed" stroke-width="2.4" fill="none"/>
+    <text x="944" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">Clamp Fields</text>
+    <text x="900" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Override of create values</text>
+    <text x="900" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">truncates over-limit</text>
+    <text x="900" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">address, city and zip</text>
+    <text x="900" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">before the request.</text>
+  </g>
+
+  <!-- node 4: gateway accepts -->
+  <g>
+    <rect x="1280" y="90" width="240" height="240" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+    <rect x="1280" y="90" width="240" height="64" rx="16" fill="url(#nodeHead)"/>
+    <rect x="1280" y="138" width="240" height="16" fill="url(#nodeHead)"/>
+    <circle cx="1312" cy="122" r="17" fill="#ffffff" opacity="0.92"/>
+    <path d="M1312 114 v16 M1304 124 l8 8 l16 -18" stroke="#7c3aed" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <text x="1344" y="119" font-family="DejaVu Sans" font-size="26" font-weight="bold" fill="#ffffff">Gateway OK</text>
+    <text x="1300" y="196" font-family="DejaVu Sans" font-size="19" fill="#1f2937">Request passes schema</text>
+    <text x="1300" y="224" font-family="DejaVu Sans" font-size="19" fill="#1f2937">validation, card is</text>
+    <text x="1300" y="252" font-family="DejaVu Sans" font-size="19" fill="#1f2937">attempted, payment</text>
+    <text x="1300" y="280" font-family="DejaVu Sans" font-size="19" fill="#1f2937">completes normally.</text>
+  </g>
+
+  <text x="780" y="384" text-anchor="middle" font-family="DejaVu Sans" font-size="17" fill="#6b7280">No more unexplained failures: the fix applies before the card is ever attempted</text>
+</svg>

@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="Authorize.Net address truncate: payment attempt, schema check, clamped fields, gateway accepts"/>
+    </section>
+
     <section class="hero">
       <h1>Authorize.Net Address Truncate</h1>
       <p>Stop Authorize.Net payments from failing on over-long billTo addresses — clamp address, city and zip to the gateway schema limits.</p>
@@ -62,6 +69,7 @@
 <li>In-range values pass through unchanged.</li>
 <li>Customers no longer hit unexplained payment failures from long addresses.</li><!-- <li>step</li> -->
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: payment attempt builds the billTo block, fields checked against schema limits, over-limit values clamped, gateway accepts"/>
     </section>
 
     <div class="footer">
