@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="Authorize.Net void fix: void issued, empty reference, parent reference used, gateway accepts"/>
+    </section>
+
     <section class="hero">
       <h1>Authorize.Net Void Fix</h1>
       <p>Fix post-validation voids failing with "A valid referenced transaction ID is required" — use the parent transaction's real transId.</p>
@@ -62,6 +69,7 @@
 <li>The void request now carries the source transaction&#8217;s provider reference.</li>
 <li>Authorize.Net accepts the void — no more "valid referenced transaction ID required" errors.</li><!-- <li>step</li> -->
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: void issued creates a child transaction, the request is routed through the parent's real transId, and the gateway accepts"/>
     </section>
 
     <div class="footer">
