@@ -28,7 +28,7 @@
     'license': 'OPL-1',
     'price': 69,
     'currency': 'USD',
-    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png', 'static/description/screenshot_5.png'],
+    'images': ['static/description/screenshot_1.png', 'static/description/screenshot_2.png', 'static/description/screenshot_3.png', 'static/description/screenshot_4.png', 'static/description/screenshot_5.png', 'static/description/hero.png', 'static/description/flow.png'],
     'depends': [
         'base',
         'sale_management',

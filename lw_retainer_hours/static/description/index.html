@@ -23,12 +23,19 @@
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="Retainer hours: plan setup, consumption logging, automatic cycle close and renewal invoicing"/>
+    </section>
+
     <section class="hero">
       <h1>Retainer Hours &amp; Prepaid Blocks</h1>
       <p>Track included retainer hours per client per monthly cycle, roll unused hours over once, and bill overages automatically.</p>
@@ -64,6 +71,7 @@
 <li>The daily cron closes each cycle, computes rollover and overage hours, and drafts the renewal invoice.</li>
 <li>Your client reviews their hours log on the portal.</li><!-- <li>step</li> -->
       </ol>
+      <img class="flow" src="flow.png" alt="How it works: sell or set up the retainer plan, log consumption, the daily cron closes the cycle, and the renewal invoice with overage line is drafted"/>
     </section>
 
     <div class="footer">
