@@ -1,75 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8">
   <title>CC Surcharge Suite | Loomworks Solutions</title>
   <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
-  <style>
-    :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
-    .wrap { max-width:1560px; margin:0 auto; }
-    .hero { background:linear-gradient(135deg,#2e1065 0%,var(--brand) 60%,#8b5cf6 100%); color:#fff; padding:64px 48px; }
-    .hero h1 { font-size:2.4em; margin-bottom:12px; }
-    .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
-    .badges { margin-top:18px; }
-    .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
-    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
-    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
-    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
-    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-    .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .compare { padding:0 48px 40px; }
-    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .compare p { margin-top:12px; font-size:.95em; }
-    .how { padding:0 48px 40px; }
-    .how ol { margin-left:24px; }
-    .how li { margin-bottom:8px; }
-    .faq { padding:0 48px 40px; }
-    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
-    .screens { padding:0 48px 40px; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
-    .hero-art { padding:40px 48px 0; }
-    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
-    .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
-    .footer a { color:var(--brand); }
-  </style>
+  
 </head>
-<body>
-  <div class="wrap">
-    <section class="hero-art">
-      <img src="hero.png" alt="CC surcharge: portal payment, BIN capture, surcharge fee, and past-due service charge"/>
+<body style="margin:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1f2937;background:#f8fafc;line-height:1.6;">
+  <div class="wrap" style="max-width:1560px;margin:0 auto;">
+    <section class="hero-art" style="padding:40px 48px 0;">
+      <img src="hero.png" alt="CC surcharge: portal payment, BIN capture, surcharge fee, and past-due service charge" style="width:100%;display:block;border-radius:12px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);">
     </section>
 
-    <section class="hero">
-      <h1>CC Surcharge Suite</h1>
-      <p>Credit card surcharges with automatic debit-card BIN exclusion and portal fee quotes, plus a monthly service charge on past-due balances — in one module.</p>
-      <div class="badges">
-        <span class="badge">Odoo 19.0</span>
-        <span class="badge">$129 one-time</span>
-        <span class="badge">v19.0.1.0.0</span>
+    <section class="hero" style="background:linear-gradient(135deg,#2e1065 0%,#7c3aed 60%,#8b5cf6 100%);color:#fff;padding:64px 48px;">
+      <h1 style="margin:0 0 12px;font-size:2.4em;">CC Surcharge Suite</h1>
+      <p style="margin:0;font-size:1.15em;opacity:.92;max-width:760px;">Credit card surcharges with automatic debit-card BIN exclusion and portal fee quotes, plus a monthly service charge on past-due balances — in one module.</p>
+      <div class="badges" style="margin-top:18px;">
+        <span class="badge" style="display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;margin-right:8px;font-size:.85em;">Odoo 19.0</span>
+        <span class="badge" style="display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;margin-right:8px;font-size:.85em;">$129 one-time</span>
+        <span class="badge" style="display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;margin-right:8px;font-size:.85em;">v19.0.1.0.0</span>
       </div>
     </section>
 
-    <section class="trust">
-      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
-      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
-      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
-      <span class="tbadge">Licensed under OPL-1</span>
+    <section class="trust" style="background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 48px;">
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Built &amp; maintained by Loomworks Solutions LLC</span>
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Licensed under OPL-1</span>
     </section>
 
-    <section class="features">
-      <div class="card"><h3>Credit card surcharge at payment time</h3><p>Add a configurable percentage fee when Net 30+ customers pay by credit card. The fee posts as its own invoice or as a line on the invoice being paid — your choice of accounting treatment.</p></div>
-      <div class="card"><h3>Debit-card BIN exclusion</h3><p>Self-hosted BIN (Bank Identification Number) lookup with quarterly CSV refresh. Debit and unidentifiable cards are never surcharged, so your cardholders are never surprised.</p></div>
-      <div class="card"><h3>Portal fee quote</h3><p>Customers see the exact fee before they pay: quoted as soon as the first six card digits are entered or a saved card is selected, then charged as invoice + fee in one transaction.</p></div>
-      <div class="card"><h3>Backend Pay-wizard surcharge</h3><p>Staff register card payments with a waivable surcharge checkbox, pre-checked for credit-card tokens. Every gate is re-validated server-side.</p></div>
-      <div class="card"><h3>Monthly service charge on past-due AR</h3><p>1.5% per month on balances past due over 30 days (rate, grace days and minimum balance all configurable). A monthly cron computes and reports — and only invoices when you say so.</p></div>
-      <div class="card"><h3>DRY-RUN-ARMED by default</h3><p>Installs in dry-run: the cron reports monthly and creates zero invoices until you set an income account and explicitly go live. No money moves by accident.</p></div>
+    <section class="features" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:40px 48px;">
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">Credit card surcharge at payment time</h3><p style="margin:0;">Add a configurable percentage fee when Net 30+ customers pay by credit card. The fee posts as its own invoice or as a line on the invoice being paid — your choice of accounting treatment.</p></div>
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">Debit-card BIN exclusion</h3><p style="margin:0;">Self-hosted BIN (Bank Identification Number) lookup with quarterly CSV refresh. Debit and unidentifiable cards are never surcharged, so your cardholders are never surprised.</p></div>
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">Portal fee quote</h3><p style="margin:0;">Customers see the exact fee before they pay: quoted as soon as the first six card digits are entered or a saved card is selected, then charged as invoice + fee in one transaction.</p></div>
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">Backend Pay-wizard surcharge</h3><p style="margin:0;">Staff register card payments with a waivable surcharge checkbox, pre-checked for credit-card tokens. Every gate is re-validated server-side.</p></div>
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">Monthly service charge on past-due AR</h3><p style="margin:0;">1.5% per month on balances past due over 30 days (rate, grace days and minimum balance all configurable). A monthly cron computes and reports — and only invoices when you say so.</p></div>
+      <div class="card" style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><h3 style="margin:0 0 8px;color:#7c3aed;font-size:1.15em;">DRY-RUN-ARMED by default</h3><p style="margin:0;">Installs in dry-run: the cron reports monthly and creates zero invoices until you set an income account and explicitly go live. No money moves by accident.</p></div>
     </section>
 
-    <section class="compare">
-      <h2>How we compare</h2>
+    <section class="compare" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">How we compare</h2>
       <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;font-size:.95em;">
         <tr style="background:#f5f3ff;">
           <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">App</th>
@@ -97,50 +67,50 @@
           <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
         </tr>
       </table>
-      <p>Priced roughly 40% below the entry edition of the leading standalone surcharge app — and the monthly past-due service charge is included in the same purchase instead of a separate module. One license per installed company.</p>
+      <p style="margin:12px 0 0;font-size:.95em;">Priced roughly 40% below the entry edition of the leading standalone surcharge app — and the monthly past-due service charge is included in the same purchase instead of a separate module. One license per installed company.</p>
     </section>
 
-    <section class="how">
-      <h2>How it works</h2>
-      <ol>
-        <li>Install the module and open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge. Set the credit card surcharge percentage, the applicable payment terms (Net 30+), and the monthly service charge parameters.</li>
-        <li>Load BIN reference data (Settings &gt; View BIN Records &gt; load a bin-list CSV) so debit cards are recognized and excluded automatically.</li>
-        <li>Optional: tick Portal Fee Uplift to quote and charge the fee in the customer payment modal in one transaction; the backend Pay wizard shows a waivable surcharge checkbox for staff card payments.</li>
-        <li>The monthly cron computes past-due service charges and writes a per-invoice audit report. Review runs under Accounting &gt; Reporting &gt; Service Charge Runs.</li>
-        <li>To go live, set a dedicated Service Charge Income Account and untick Dry-Run Mode. The module refuses to leave dry-run without the account.</li>
+    <section class="how" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">How it works</h2>
+      <ol style="margin:0 0 0 24px;">
+        <li style="margin:0 0 8px;">Install the module and open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge. Set the credit card surcharge percentage, the applicable payment terms (Net 30+), and the monthly service charge parameters.</li>
+        <li style="margin:0 0 8px;">Load BIN reference data (Settings &gt; View BIN Records &gt; load a bin-list CSV) so debit cards are recognized and excluded automatically.</li>
+        <li style="margin:0 0 8px;">Optional: tick Portal Fee Uplift to quote and charge the fee in the customer payment modal in one transaction; the backend Pay wizard shows a waivable surcharge checkbox for staff card payments.</li>
+        <li style="margin:0 0 8px;">The monthly cron computes past-due service charges and writes a per-invoice audit report. Review runs under Accounting &gt; Reporting &gt; Service Charge Runs.</li>
+        <li style="margin:0 0 8px;">To go live, set a dedicated Service Charge Income Account and untick Dry-Run Mode. The module refuses to leave dry-run without the account.</li>
       </ol>
-      <img class="flow" src="flow.png" alt="How it works: portal payment, BIN capture, surcharge quoted and charged in one transaction, plus monthly service charge on past-due AR"/>
+      <img class="flow" src="flow.png" alt="How it works: portal payment, BIN capture, surcharge quoted and charged in one transaction, plus monthly service charge on past-due AR" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-top:22px;">
     </section>
 
-    <section class="screens">
-      <h2>Screenshots</h2>
-      <img src="screenshot_1.png" alt="CC Surcharge settings in the Accounting Settings page"/>
-      <img src="screenshot_2.png" alt="BIN records table showing card network ranges"/>
-      <img src="screenshot_3.png" alt="Service charge runs with dry-run and live status"/>
-      <img src="screenshot_4.png" alt="Service charge run detail with computed amounts"/>
-      <img src="screenshot_5.png" alt="Invoice payment modal with the credit card surcharge applied"/>
-      <img src="screenshot_6.png" alt="Portal invoice payment with the card fee quoted"/>
+    <section class="screens" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">Screenshots</h2>
+      <img src="screenshot_1.png" alt="CC Surcharge settings in the Accounting Settings page" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
+      <img src="screenshot_2.png" alt="BIN records table showing card network ranges" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
+      <img src="screenshot_3.png" alt="Service charge runs with dry-run and live status" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
+      <img src="screenshot_4.png" alt="Service charge run detail with computed amounts" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
+      <img src="screenshot_5.png" alt="Invoice payment modal with the credit card surcharge applied" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
+      <img src="screenshot_6.png" alt="Portal invoice payment with the card fee quoted" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;">
     </section>
 
-    <section class="faq">
-      <h2>Frequently asked questions</h2>
-      <h3>How do I install and configure the module?</h3>
-      <p>Install it like any Odoo module (Apps &gt; Update Apps List, then Install). Open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge, set your surcharge percentage and applicable payment terms, load a BIN-list CSV, and (optionally) enable the portal fee uplift.</p>
-      <h3>Which Odoo versions does it support?</h3>
-      <p>This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
-      <h3>What is the refund policy?</h3>
-      <p>Per the Odoo Apps Store policy, buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
-      <h3>How fast is support?</h3>
-      <p>Questions get a reply within one business day at stephen@loomworks.dev.</p>
-      <h3>Is my data safe?</h3>
-      <p>Yes. The module runs entirely inside your own Odoo database and collects nothing. BIN lookups use a self-hosted reference table, and card data is handled by your existing Authorize.Net integration.</p>
-      <h3>What happens in Dry-Run Mode?</h3>
-      <p>The monthly service charge cron computes charges and writes the per-invoice audit report, but creates zero invoices. It only goes live once you set a dedicated Service Charge Income Account and switch Dry-Run Mode off — the module refuses to leave dry-run without the account.</p>
+    <section class="faq" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">Frequently asked questions</h2>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">How do I install and configure the module?</h3>
+      <p style="margin:0;">Install it like any Odoo module (Apps &gt; Update Apps List, then Install). Open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge, set your surcharge percentage and applicable payment terms, load a BIN-list CSV, and (optionally) enable the portal fee uplift.</p>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">Which Odoo versions does it support?</h3>
+      <p style="margin:0;">This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">What is the refund policy?</h3>
+      <p style="margin:0;">Per the Odoo Apps Store policy, buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">How fast is support?</h3>
+      <p style="margin:0;">Questions get a reply within one business day at stephen@loomworks.dev.</p>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">Is my data safe?</h3>
+      <p style="margin:0;">Yes. The module runs entirely inside your own Odoo database and collects nothing. BIN lookups use a self-hosted reference table, and card data is handled by your existing Authorize.Net integration.</p>
+      <h3 style="margin:18px 0 6px;color:#7c3aed;font-size:1.05em;">What happens in Dry-Run Mode?</h3>
+      <p style="margin:0;">The monthly service charge cron computes charges and writes the per-invoice audit report, but creates zero invoices. It only goes live once you set a dedicated Service Charge Income Account and switch Dry-Run Mode off — the module refuses to leave dry-run without the account.</p>
     </section>
 
-    <div class="footer">
-      <p><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
-      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under OPL-1 — one license per installed company.</p>
+    <div class="footer" style="padding:24px 48px 40px;color:#6b7280;font-size:.92em;border-top:1px solid #e5e7eb;">
+      <p style="margin:0;"><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
+      <p style="margin:0;">Built and maintained by <a href="https://loomworks.solutions" style="color:#7c3aed;">Loomworks Solutions LLC</a>. Licensed under OPL-1 — one license per installed company.</p>
     </div>
   </div>
 </body>
