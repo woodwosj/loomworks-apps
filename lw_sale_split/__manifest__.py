@@ -19,7 +19,7 @@ Key Features:
 """,
     "author": "Loomworks Solutions LLC",
     "website": "https://loomworks.solutions",
-    "support": "apps@loomworks.solutions",
+    "support": "stephen@loomworks.dev",
     "license": "OPL-1",
     "price": 9,
     "currency": "USD",
