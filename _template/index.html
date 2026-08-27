@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>{{TITLE}} | Loomworks Solutions</title>
-  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
   <style>
     :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,38 +14,58 @@
     .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
     .badges { margin-top:18px; }
     .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
+    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
     .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .screens { padding:0 48px 40px; }
-    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .compare { padding:0 48px 40px; }
+    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .compare p { margin-top:12px; font-size:.95em; }
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .faq { padding:0 48px 40px; }
+    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
+    .screens { padding:0 48px 40px; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .hero-art { padding:40px 48px 0; }
+    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
     .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
     .footer a { color:var(--brand); }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <section class="hero-art">
+      <img src="hero.png" alt="{{HERO_ALT}}"/>
+    </section>
+
     <section class="hero">
       <h1>{{TITLE}}</h1>
       <p>{{TAGLINE}}</p>
       <div class="badges">
         <span class="badge">Odoo 19.0</span>
-        {{EDITION_BADGE}}<!-- e.g. <span class="badge">Enterprise ready</span> -->
+        {{PRICE_BADGE}}<!-- e.g. <span class="badge">$129 one-time</span> or <span class="badge">Free</span> -->
         <span class="badge">v{{VERSION}}</span>
       </div>
+    </section>
+
+    <section class="trust">
+      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+      {{LICENSE_BADGE}}<!-- <span class="tbadge">Licensed under OPL-1</span> or LGPL-3 -->
     </section>
 
     <section class="features">
       {{FEATURE_CARDS}}<!-- 3-6 x <div class="card"><h3>X</h3><p>Y</p></div> -->
     </section>
 
-    <section class="screens">
-      <h2>Screenshots</h2>
-      {{SCREENSHOTS}}<!-- <img src="img.png" alt="..."/> per shot -->
+    <section class="compare">
+      <h2>How we compare</h2>
+      {{COMPARISON}}<!-- table with inline styles, or omit this section when no paid alternative exists -->
     </section>
 
     <section class="how">
@@ -53,6 +73,17 @@
       <ol>
         {{HOW_STEPS}}<!-- <li>step</li> -->
       </ol>
+      <img class="flow" src="flow.png" alt="{{FLOW_ALT}}"/>
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      {{SCREENSHOTS}}<!-- <img src="img.png" alt="..."/> per shot -->
+    </section>
+
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+      {{FAQ}}<!-- 4-6 x <h3>Q</h3><p>A</p> -->
     </section>
 
     <div class="footer">
