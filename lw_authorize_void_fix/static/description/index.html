@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>Authorize.Net Void Fix | Loomworks Solutions</title>
-  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
   <style>
     :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,15 +14,21 @@
     .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
     .badges { margin-top:18px; }
     .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
+    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
     .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .screens { padding:0 48px 40px; }
-    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .compare { padding:0 48px 40px; }
+    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .compare p { margin-top:12px; font-size:.95em; }
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .faq { padding:0 48px 40px; }
+    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
+    .screens { padding:0 48px 40px; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
     .hero-art { padding:40px 48px 0; }
     .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
@@ -41,16 +47,34 @@
       <p>Fix post-validation voids failing with "A valid referenced transaction ID is required" — use the parent transaction's real transId.</p>
       <div class="badges">
         <span class="badge">Odoo 19.0</span>
-        <!-- e.g. <span class="badge">Enterprise ready</span> -->
+        <span class="badge">Free</span>
         <span class="badge">v19.0.1.0.0</span>
       </div>
     </section>
 
+    <section class="trust">
+      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+      <span class="tbadge">Licensed under LGPL-3</span>
+    </section>
+
     <section class="features">
       <div class="card"><h3>Fixes Failed Voids</h3><p>Voids after validation/authorization were sent with an empty refTransId and rejected — this module sends the parent&#8217;s real Authorize.Net transId instead.</p></div>
-<div class="card"><h3>Matches Refund &amp; Capture</h3><p>Uses the same source-transaction reference pattern core already uses for refunds and captures.</p></div>
-<div class="card"><h3>Safe Fallback</h3><p>If no source transaction is linked, falls back to the child transaction&#8217;s own reference rather than voiding with an empty string.</p></div>
-<div class="card"><h3>Zero Configuration</h3><p>Install and forget — the fix applies to every Authorize.Net void.</p></div><!-- 3-6 x <div class="card"><h3>X</h3><p>Y</p></div> -->
+      <div class="card"><h3>Matches Refund &amp; Capture</h3><p>Uses the same source-transaction reference pattern core already uses for refunds and captures.</p></div>
+      <div class="card"><h3>Safe Fallback</h3><p>If no source transaction is linked, falls back to the child transaction&#8217;s own reference rather than voiding with an empty string.</p></div>
+      <div class="card"><h3>Zero Configuration</h3><p>Install and forget — the fix applies to every Authorize.Net void.</p></div>
+    </section>
+
+    <section class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>Install the module alongside payment_authorize.</li>
+        <li>A payment is validated or authorized, then voided (e.g. cancellation flows).</li>
+        <li>The void request now carries the source transaction&#8217;s provider reference.</li>
+        <li>Authorize.Net accepts the void — no more "valid referenced transaction ID required" errors.</li>
+      </ol>
+      <img class="flow" src="flow.png" alt="How it works: void issued creates a child transaction, the request is routed through the parent's real transId, and the gateway accepts"/>
     </section>
 
     <section class="screens">
@@ -61,20 +85,25 @@
       <img src="screenshot_4.png" alt="Confirmed payment transaction detail"/>
     </section>
 
-    <section class="how">
-      <h2>How it works</h2>
-      <ol>
-        <li>Install the module alongside payment_authorize.</li>
-<li>A payment is validated or authorized, then voided (e.g. cancellation flows).</li>
-<li>The void request now carries the source transaction&#8217;s provider reference.</li>
-<li>Authorize.Net accepts the void — no more "valid referenced transaction ID required" errors.</li><!-- <li>step</li> -->
-      </ol>
-      <img class="flow" src="flow.png" alt="How it works: void issued creates a child transaction, the request is routed through the parent's real transId, and the gateway accepts"/>
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+      <h3>How do I install and configure the module?</h3>
+      <p>Install it like any Odoo module (Apps &gt; Update Apps List, then Install). It works alongside the standard payment_authorize module and needs no configuration — the fix applies to every Authorize.Net void automatically.</p>
+      <h3>Which Odoo versions does it support?</h3>
+      <p>This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
+      <h3>What if the module doesn't work as expected?</h3>
+      <p>This module is free on the store. Paid apps on the Odoo Apps Store are covered by the store's refund policy: buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
+      <h3>How fast is support?</h3>
+      <p>Questions get a reply within one business day at stephen@loomworks.dev.</p>
+      <h3>Is my data safe?</h3>
+      <p>Yes. The module runs entirely inside your own Odoo database and collects nothing. It adds no external calls beyond the Authorize.Net transactions your Odoo already makes.</p>
+      <h3>Does it change refunds or captures?</h3>
+      <p>No. Refunds and captures already use the source transaction's reference in core, and this module only makes voids behave the same way. Nothing else is touched.</p>
     </section>
 
     <div class="footer">
       <p><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
-      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under LGPL-3.<!-- e.g. Licensed under OPL-1 / LGPL-3 --></p>
+      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under LGPL-3.</p>
     </div>
   </div>
 </body>
