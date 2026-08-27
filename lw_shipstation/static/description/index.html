@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>ShipStation V2 Webhook Connector | Loomworks Solutions</title>
-  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
   <style>
     :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,15 +14,21 @@
     .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
     .badges { margin-top:18px; }
     .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
+    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
     .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .screens { padding:0 48px 40px; }
-    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .compare { padding:0 48px 40px; }
+    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .compare p { margin-top:12px; font-size:.95em; }
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .faq { padding:0 48px 40px; }
+    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
+    .screens { padding:0 48px 40px; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
     .hero-art { padding:40px 48px 0; }
     .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
@@ -41,8 +47,16 @@
       <p>Native ShipStation V2 webhooks, outbound order export, and automatic tracking import for Odoo deliveries — with a poll fallback that never misses a shipment.</p>
       <div class="badges">
         <span class="badge">Odoo 19.0</span>
+        <span class="badge">$79 one-time</span>
         <span class="badge">v19.0.1.0.0</span>
       </div>
+    </section>
+
+    <section class="trust">
+      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+      <span class="tbadge">Licensed under OPL-1</span>
     </section>
 
     <section class="features">
@@ -54,12 +68,36 @@
       <div class="card"><h3>Configurable Web Queue Button</h3><p>&ldquo;Open in ShipStation&rdquo; jumps straight to the Awaiting Shipment queue on your account&rsquo;s regional pod URL &mdash; configurable per company.</p></div>
     </section>
 
-    <section class="screens">
-      <h2>Screenshots</h2>
-      <img src="screenshot_1.png" alt="ShipStation integration settings under Inventory"/>
-      <img src="screenshot_2.png" alt="ShipStation operation log list"/>
-      <img src="screenshot_3.png" alt="ShipStation log detail with export result"/>
-      <img src="screenshot_4.png" alt="Delivery form with ShipStation export and tracking buttons"/>
+    <section class="compare">
+      <h2>How we compare</h2>
+      <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;font-size:.95em;">
+        <tr style="background:#f5f3ff;">
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">App</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">Price</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">What's included</th>
+        </tr>
+        <tr style="background:#faf5ff;">
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>Loomworks ShipStation V2 Webhook Connector</strong></td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>$79</strong> one-time</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">ShipStation V2 API, webhook-native tracking with HMAC verification, 30-minute poll fallback, order export, operator log, web queue button</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">ShipStation integration (Emipro)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$382</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">ShipStation connector (Vraja)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$115</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">ShipStation integration (Webkul)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$99</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+      </table>
+      <p>Built around the ShipStation V2 API: tracking lands on your deliveries through the V2 webhook instead of being pulled on a schedule — the 30-minute poll is only the safety net. Priced below the comparable paid connectors. One license per installed company.</p>
     </section>
 
     <section class="how">
@@ -71,6 +109,30 @@
         <li>Export orders manually or automatically. When ShipStation ships, tracking flows back via webhook — or via the 30-minute poll — and appears on the delivery with a chatter entry.</li>
       </ol>
       <img class="flow" src="flow.png" alt="How it works: order export to ShipStation, carrier processing, V2 webhook with poll fallback, tracking imported onto the delivery"/>
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <img src="screenshot_1.png" alt="ShipStation integration settings under Inventory"/>
+      <img src="screenshot_2.png" alt="ShipStation operation log list"/>
+      <img src="screenshot_3.png" alt="ShipStation log detail with export result"/>
+      <img src="screenshot_4.png" alt="Delivery form with ShipStation export and tracking buttons"/>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+      <h3>How do I install and configure the module?</h3>
+      <p>Install it like any Odoo module (Apps &gt; Update Apps List, then Install). Enable ShipStation under Inventory &gt; Configuration &gt; Settings, set the API key and secret, and register a fulfillment_shipped_v2 webhook in ShipStation pointing at /shipstation/webhook/v2 on your Odoo URL.</p>
+      <h3>Which Odoo versions does it support?</h3>
+      <p>This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
+      <h3>What is the refund policy?</h3>
+      <p>Per the Odoo Apps Store policy, buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
+      <h3>How fast is support?</h3>
+      <p>Questions get a reply within one business day at stephen@loomworks.dev.</p>
+      <h3>Is my data safe?</h3>
+      <p>Yes. The module runs entirely inside your own Odoo database. It only talks to ShipStation using the credentials you configure — no data is collected by Loomworks.</p>
+      <h3>What happens if a webhook is missed?</h3>
+      <p>The 30-minute watermark-based poll reconciles any shipment whose webhook never arrived, and per-picking idempotency (ss_shipment_id) means the same shipment is acknowledged without double-posting — even if both paths deliver it.</p>
     </section>
 
     <div class="footer">
