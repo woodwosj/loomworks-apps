@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>CC Surcharge Suite | Loomworks Solutions</title>
-  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
   <style>
     :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,15 +14,21 @@
     .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
     .badges { margin-top:18px; }
     .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
+    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
     .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .screens { padding:0 48px 40px; }
-    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .compare { padding:0 48px 40px; }
+    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .compare p { margin-top:12px; font-size:.95em; }
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .faq { padding:0 48px 40px; }
+    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
+    .screens { padding:0 48px 40px; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
     .hero-art { padding:40px 48px 0; }
     .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
@@ -41,9 +47,16 @@
       <p>Credit card surcharges with automatic debit-card BIN exclusion and portal fee quotes, plus a monthly service charge on past-due balances — in one module.</p>
       <div class="badges">
         <span class="badge">Odoo 19.0</span>
-        <!-- EDITION_BADGE -->
+        <span class="badge">$129 one-time</span>
         <span class="badge">v19.0.1.0.0</span>
       </div>
+    </section>
+
+    <section class="trust">
+      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+      <span class="tbadge">Licensed under OPL-1</span>
     </section>
 
     <section class="features">
@@ -55,14 +68,36 @@
       <div class="card"><h3>DRY-RUN-ARMED by default</h3><p>Installs in dry-run: the cron reports monthly and creates zero invoices until you set an income account and explicitly go live. No money moves by accident.</p></div>
     </section>
 
-    <section class="screens">
-      <h2>Screenshots</h2>
-      <img src="screenshot_1.png" alt="CC Surcharge settings in the Accounting Settings page"/>
-      <img src="screenshot_2.png" alt="BIN records table showing card network ranges"/>
-      <img src="screenshot_3.png" alt="Service charge runs with dry-run and live status"/>
-      <img src="screenshot_4.png" alt="Service charge run detail with computed amounts"/>
-      <img src="screenshot_5.png" alt="Invoice payment modal with the credit card surcharge applied"/>
-      <img src="screenshot_6.png" alt="Portal invoice payment with the card fee quoted"/>
+    <section class="compare">
+      <h2>How we compare</h2>
+      <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;font-size:.95em;">
+        <tr style="background:#f5f3ff;">
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">App</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">Price</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">What's included</th>
+        </tr>
+        <tr style="background:#faf5ff;">
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>Loomworks CC Surcharge Suite</strong></td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>$129</strong> one-time</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Surcharge engine, BIN-aware debit-card exclusion, portal fee quote, backend Pay-wizard surcharge, monthly past-due service charge, dry-run safety</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Credit card surcharge app — entry edition (Sonny Huynh)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$209.95</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Credit card surcharge app — premium edition (Sonny Huynh)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$326.59</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Surcharge module (echoBitz)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">~$102</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+      </table>
+      <p>Priced roughly 40% below the entry edition of the leading standalone surcharge app — and the monthly past-due service charge is included in the same purchase instead of a separate module. One license per installed company.</p>
     </section>
 
     <section class="how">
@@ -75,6 +110,32 @@
         <li>To go live, set a dedicated Service Charge Income Account and untick Dry-Run Mode. The module refuses to leave dry-run without the account.</li>
       </ol>
       <img class="flow" src="flow.png" alt="How it works: portal payment, BIN capture, surcharge quoted and charged in one transaction, plus monthly service charge on past-due AR"/>
+    </section>
+
+    <section class="screens">
+      <h2>Screenshots</h2>
+      <img src="screenshot_1.png" alt="CC Surcharge settings in the Accounting Settings page"/>
+      <img src="screenshot_2.png" alt="BIN records table showing card network ranges"/>
+      <img src="screenshot_3.png" alt="Service charge runs with dry-run and live status"/>
+      <img src="screenshot_4.png" alt="Service charge run detail with computed amounts"/>
+      <img src="screenshot_5.png" alt="Invoice payment modal with the credit card surcharge applied"/>
+      <img src="screenshot_6.png" alt="Portal invoice payment with the card fee quoted"/>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+      <h3>How do I install and configure the module?</h3>
+      <p>Install it like any Odoo module (Apps &gt; Update Apps List, then Install). Open Accounting &gt; Configuration &gt; Settings &gt; CC Surcharge, set your surcharge percentage and applicable payment terms, load a BIN-list CSV, and (optionally) enable the portal fee uplift.</p>
+      <h3>Which Odoo versions does it support?</h3>
+      <p>This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
+      <h3>What is the refund policy?</h3>
+      <p>Per the Odoo Apps Store policy, buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
+      <h3>How fast is support?</h3>
+      <p>Questions get a reply within one business day at stephen@loomworks.dev.</p>
+      <h3>Is my data safe?</h3>
+      <p>Yes. The module runs entirely inside your own Odoo database and collects nothing. BIN lookups use a self-hosted reference table, and card data is handled by your existing Authorize.Net integration.</p>
+      <h3>What happens in Dry-Run Mode?</h3>
+      <p>The monthly service charge cron computes charges and writes the per-invoice audit report, but creates zero invoices. It only goes live once you set a dedicated Service Charge Income Account and switch Dry-Run Mode off — the module refuses to leave dry-run without the account.</p>
     </section>
 
     <div class="footer">
