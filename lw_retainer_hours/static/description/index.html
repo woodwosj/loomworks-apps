@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>Retainer Hours &amp; Prepaid Blocks | Loomworks Solutions</title>
-  <!-- Shared Loomworks Apps template. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
+  <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
   <style>
     :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -14,15 +14,21 @@
     .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
     .badges { margin-top:18px; }
     .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
+    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
+    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
     .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .screens { padding:0 48px 40px; }
-    .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
+    .compare { padding:0 48px 40px; }
+    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
+    .compare p { margin-top:12px; font-size:.95em; }
     .how { padding:0 48px 40px; }
     .how ol { margin-left:24px; }
     .how li { margin-bottom:8px; }
+    .faq { padding:0 48px 40px; }
+    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
+    .screens { padding:0 48px 40px; }
+    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
     .hero-art { padding:40px 48px 0; }
     .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
     .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
@@ -41,17 +47,57 @@
       <p>Track included retainer hours per client per monthly cycle, roll unused hours over once, and bill overages automatically.</p>
       <div class="badges">
         <span class="badge">Odoo 19.0</span>
-        <!-- e.g. <span class="badge">Enterprise ready</span> -->
+        <span class="badge">$69 one-time</span>
         <span class="badge">v19.0.1.0.0</span>
       </div>
     </section>
 
+    <section class="trust">
+      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+      <span class="tbadge">Licensed under OPL-1</span>
+    </section>
+
     <section class="features">
       <div class="card"><h3>Monthly Retainer Plans</h3><p>Set included hours, in-plan and overage rates, cycle start day, and rollover policy for each plan.</p></div>
-<div class="card"><h3>One-Cycle Rollover</h3><p>Unused hours carry over to the next cycle only &#8212; capped at the monthly allowance, no banking.</p></div>
-<div class="card"><h3>Automatic Cycle Billing</h3><p>A daily cron closes cycles, snapshots usage, and drafts the renewal invoice with overage lines when applicable.</p></div>
-<div class="card"><h3>Timesheet &amp; Manual Entry</h3><p>Feed consumption from timesheets (account.analytic.line) or log hours manually against a plan.</p></div>
-<div class="card"><h3>Customer Portal Hours Log</h3><p>Clients see their hours used and remaining per cycle on the portal.</p></div><!-- 3-6 x <div class="card"><h3>X</h3><p>Y</p></div> -->
+      <div class="card"><h3>One-Cycle Rollover</h3><p>Unused hours carry over to the next cycle only &#8212; capped at the monthly allowance, no banking.</p></div>
+      <div class="card"><h3>Automatic Cycle Billing</h3><p>A daily cron closes cycles, snapshots usage, and drafts the renewal invoice with overage lines when applicable.</p></div>
+      <div class="card"><h3>Timesheet &amp; Manual Entry</h3><p>Feed consumption from timesheets (account.analytic.line) or log hours manually against a plan.</p></div>
+      <div class="card"><h3>Customer Portal Hours Log</h3><p>Clients see their hours used and remaining per cycle on the portal.</p></div>
+    </section>
+
+    <section class="compare">
+      <h2>How we compare</h2>
+      <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;font-size:.95em;">
+        <tr style="background:#f5f3ff;">
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">App</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">Price</th>
+          <th style="text-align:left;padding:10px 14px;border:1px solid #e5e7eb;">What's included</th>
+        </tr>
+        <tr style="background:#faf5ff;">
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>Loomworks Retainer Hours &amp; Prepaid Blocks</strong></td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;"><strong>$69</strong> one-time</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Retainer plan configuration, one-cycle rollover, automatic cycle billing with overage lines, timesheet or manual consumption, customer portal hours log</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">Retainer hours module (Pokutsoft)</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">$91.15</td>
+          <td style="padding:10px 14px;border:1px solid #e5e7eb;">—</td>
+        </tr>
+      </table>
+      <p>Priced about 24% below the comparable paid module — with the customer-facing portal hours log included. One license per installed company.</p>
+    </section>
+
+    <section class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>Create a retainer plan with included hours, rates, cycle start day, and rollover policy.</li>
+        <li>Log consumption from timesheets or manually against the plan.</li>
+        <li>The daily cron closes each cycle, computes rollover and overage hours, and drafts the renewal invoice.</li>
+        <li>Your client reviews their hours log on the portal.</li>
+      </ol>
+      <img class="flow" src="flow.png" alt="How it works: sell or set up the retainer plan, log consumption, the daily cron closes the cycle, and the renewal invoice with overage line is drafted"/>
     </section>
 
     <section class="screens">
@@ -63,20 +109,25 @@
       <img src="screenshot_5.png" alt="Customer portal hours log"/>
     </section>
 
-    <section class="how">
-      <h2>How it works</h2>
-      <ol>
-        <li>Create a retainer plan with included hours, rates, cycle start day, and rollover policy.</li>
-<li>Log consumption from timesheets or manually against the plan.</li>
-<li>The daily cron closes each cycle, computes rollover and overage hours, and drafts the renewal invoice.</li>
-<li>Your client reviews their hours log on the portal.</li><!-- <li>step</li> -->
-      </ol>
-      <img class="flow" src="flow.png" alt="How it works: sell or set up the retainer plan, log consumption, the daily cron closes the cycle, and the renewal invoice with overage line is drafted"/>
+    <section class="faq">
+      <h2>Frequently asked questions</h2>
+      <h3>How do I install and configure the module?</h3>
+      <p>Install it like any Odoo module (Apps &gt; Update Apps List, then Install). Create a retainer plan under Sales &gt; Configuration &gt; Retainer Plans, set the included hours, rates, cycle start day and rollover policy, then log consumption from timesheets or manually.</p>
+      <h3>Which Odoo versions does it support?</h3>
+      <p>This module is built for Odoo 19.0 (module version 19.0.1.0.0) and is live-tested on Odoo 19 Community Edition.</p>
+      <h3>What is the refund policy?</h3>
+      <p>Per the Odoo Apps Store policy, buyers may request a refund within 14 days of purchase if the app does not work as described.</p>
+      <h3>How fast is support?</h3>
+      <p>Questions get a reply within one business day at stephen@loomworks.dev.</p>
+      <h3>Is my data safe?</h3>
+      <p>Yes. The module runs entirely inside your own Odoo database and collects nothing. Hours, invoices and portal access all live in your Odoo instance.</p>
+      <h3>How does the one-cycle rollover work?</h3>
+      <p>Unused hours carry over to the next cycle only, capped at the monthly allowance — no banking. After that second cycle, unused hours expire, so usage stays current and invoicing stays predictable.</p>
     </section>
 
     <div class="footer">
       <p><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
-      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under OPL-1 (Odoo Proprietary License v1.0).<!-- e.g. Licensed under OPL-1 / LGPL-3 --></p>
+      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. Licensed under OPL-1 (Odoo Proprietary License v1.0).</p>
     </div>
   </div>
 </body>
