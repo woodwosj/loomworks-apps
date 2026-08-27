@@ -1,94 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8">
   <title>{{TITLE}} | Loomworks Solutions</title>
   <!-- Shared Loomworks Apps template v2. Fill {{PLACEHOLDERS}}, keep inline CSS only. -->
-  <style>
-    :root { --brand:#7c3aed; --ink:#1f2937; --muted:#6b7280; --bg:#f8fafc; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
-    .wrap { max-width:1560px; margin:0 auto; }
-    .hero { background:linear-gradient(135deg,#2e1065 0%,var(--brand) 60%,#8b5cf6 100%); color:#fff; padding:64px 48px; }
-    .hero h1 { font-size:2.4em; margin-bottom:12px; }
-    .hero p { font-size:1.15em; opacity:.92; max-width:760px; }
-    .badges { margin-top:18px; }
-    .badge { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:4px 14px; margin-right:8px; font-size:.85em; }
-    .trust { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 48px; }
-    .tbadge { display:inline-block; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:999px; padding:6px 16px; margin:4px 8px 4px 0; font-size:.88em; color:#4c1d95; }
-    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:40px 48px; }
-    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-    .card h3 { color:var(--brand); margin-bottom:8px; font-size:1.15em; }
-    .compare { padding:0 48px 40px; }
-    .compare h2, .faq h2, .screens h2, .how h2 { margin-bottom:16px; font-size:1.5em; }
-    .compare p { margin-top:12px; font-size:.95em; }
-    .how { padding:0 48px 40px; }
-    .how ol { margin-left:24px; }
-    .how li { margin-bottom:8px; }
-    .faq { padding:0 48px 40px; }
-    .faq h3 { color:var(--brand); margin:18px 0 6px; font-size:1.05em; }
-    .screens { padding:0 48px 40px; }
-    .screens img { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-bottom:16px; }
-    .hero-art { padding:40px 48px 0; }
-    .hero-art img { width:100%; display:block; border-radius:12px; border:1px solid #e5e7eb; box-shadow:0 1px 3px rgba(0,0,0,.06); }
-    .how img.flow { width:100%; border:1px solid #e5e7eb; border-radius:10px; margin-top:22px; }
-    .footer { padding:24px 48px 40px; color:var(--muted); font-size:.92em; border-top:1px solid #e5e7eb; }
-    .footer a { color:var(--brand); }
-  </style>
+  
 </head>
-<body>
-  <div class="wrap">
-    <section class="hero-art">
-      <img src="hero.png" alt="{{HERO_ALT}}"/>
+<body style="margin:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1f2937;background:#f8fafc;line-height:1.6;">
+  <div class="wrap" style="max-width:1560px;margin:0 auto;">
+    <section class="hero-art" style="padding:40px 48px 0;">
+      <img src="hero.png" alt="{{HERO_ALT}}" style="width:100%;display:block;border-radius:12px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);">
     </section>
 
-    <section class="hero">
-      <h1>{{TITLE}}</h1>
-      <p>{{TAGLINE}}</p>
-      <div class="badges">
-        <span class="badge">Odoo 19.0</span>
+    <section class="hero" style="background:linear-gradient(135deg,#2e1065 0%,#7c3aed 60%,#8b5cf6 100%);color:#fff;padding:64px 48px;">
+      <h1 style="margin:0 0 12px;font-size:2.4em;">{{TITLE}}</h1>
+      <p style="margin:0;font-size:1.15em;opacity:.92;max-width:760px;">{{TAGLINE}}</p>
+      <div class="badges" style="margin-top:18px;">
+        <span class="badge" style="display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;margin-right:8px;font-size:.85em;">Odoo 19.0</span>
         {{PRICE_BADGE}}<!-- e.g. <span class="badge">$129 one-time</span> or <span class="badge">Free</span> -->
-        <span class="badge">v{{VERSION}}</span>
+        <span class="badge" style="display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 14px;margin-right:8px;font-size:.85em;">v{{VERSION}}</span>
       </div>
     </section>
 
-    <section class="trust">
-      <span class="tbadge">Live-tested on Odoo 19 Community Edition</span>
-      <span class="tbadge">Support within 1 business day &#8212; stephen@loomworks.dev</span>
-      <span class="tbadge">Built &amp; maintained by Loomworks Solutions LLC</span>
+    <section class="trust" style="background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 48px;">
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Live-tested on Odoo 19 Community Edition</span>
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Support within 1 business day &#8212; stephen@loomworks.dev</span>
+      <span class="tbadge" style="display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:999px;padding:6px 16px;margin:4px 8px 4px 0;font-size:.88em;color:#4c1d95;">Built &amp; maintained by Loomworks Solutions LLC</span>
       {{LICENSE_BADGE}}<!-- <span class="tbadge">Licensed under OPL-1</span> or LGPL-3 -->
     </section>
 
-    <section class="features">
+    <section class="features" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:40px 48px;">
       {{FEATURE_CARDS}}<!-- 3-6 x <div class="card"><h3>X</h3><p>Y</p></div> -->
     </section>
 
-    <section class="compare">
-      <h2>How we compare</h2>
+    <section class="compare" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">How we compare</h2>
       {{COMPARISON}}<!-- table with inline styles, or omit this section when no paid alternative exists -->
     </section>
 
-    <section class="how">
-      <h2>How it works</h2>
-      <ol>
+    <section class="how" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">How it works</h2>
+      <ol style="margin:0 0 0 24px;">
         {{HOW_STEPS}}<!-- <li>step</li> -->
       </ol>
-      <img class="flow" src="flow.png" alt="{{FLOW_ALT}}"/>
+      <img class="flow" src="flow.png" alt="{{FLOW_ALT}}" style="width:100%;border:1px solid #e5e7eb;border-radius:10px;margin-top:22px;">
     </section>
 
-    <section class="screens">
-      <h2>Screenshots</h2>
+    <section class="screens" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">Screenshots</h2>
       {{SCREENSHOTS}}<!-- <img src="img.png" alt="..."/> per shot -->
     </section>
 
-    <section class="faq">
-      <h2>Frequently asked questions</h2>
+    <section class="faq" style="padding:0 48px 40px;">
+      <h2 style="margin:0 0 16px;font-size:1.5em;">Frequently asked questions</h2>
       {{FAQ}}<!-- 4-6 x <h3>Q</h3><p>A</p> -->
     </section>
 
-    <div class="footer">
-      <p><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
-      <p>Built and maintained by <a href="https://loomworks.solutions">Loomworks Solutions LLC</a>. {{LICENSE_NOTE}}<!-- e.g. Licensed under OPL-1 / LGPL-3 --></p>
+    <div class="footer" style="padding:24px 48px 40px;color:#6b7280;font-size:.92em;border-top:1px solid #e5e7eb;">
+      <p style="margin:0;"><strong>Support:</strong> stephen@loomworks.dev — we answer within one business day.</p>
+      <p style="margin:0;">Built and maintained by <a href="https://loomworks.solutions" style="color:#7c3aed;">Loomworks Solutions LLC</a>. {{LICENSE_NOTE}}<!-- e.g. Licensed under OPL-1 / LGPL-3 --></p>
     </div>
   </div>
 </body>
